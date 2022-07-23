@@ -1,0 +1,54 @@
+:root {
+  --primary: #454545;
+  --light: #ffffff;
+  --grey: #efefef;
+}
+
+body{
+  overflow: hidden;
+  font-family: 'Mulish', sans-serif;
+  font-weight: 300;
+  color: var(--primary);
+}
+
+.bg-primary{
+  background-color: var(--primary) !important;
+}
+
+a:hover{
+  text-decoration: none;
+}
+
+#sidebar-container{
+  min-height: 150vh;
+  padding-left: 1.25rem;
+  background-color: #4D5B68;
+
+}
+
+.logo{
+  padding: .875rem 1.25rem;
+}
+#menu{
+  width: 15rem;
+  color: var(--primary);
+}
+#formulario-registro{
+  margin-right: 10px;
+  padding-right: 1.25rem;
+  min-height: 100vh ;
+  border: 2px #bebebe;
+
+  
+}
+
+#contenedor-derecho{
+  background-color:   #D3E3F4;
+
+}
+
+iframe{
+  margin-top: 20px;
+  padding: 20px;
+}
+

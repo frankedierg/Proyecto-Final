@@ -1,0 +1,20 @@
+#miregistro {
+    width: 500px;
+    text-align: center;
+    margin-left: calc(50% - 250px);
+    margin-top: 90px;
+    border: solid 1px #ebebeb;
+    padding: 36px;
+    border-radius: 20px;
+    background: #8EC948;
+}
+
+#footer{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    padding: 15px 32px;   
+}
