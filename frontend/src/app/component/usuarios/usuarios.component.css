@@ -10,3 +10,25 @@
     border-color: #000;
     
 }
+
+#boton-editar,#boton-eliminar{
+  margin: 5px;
+  font-size: small ;
+}
+
+label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+td{
+  font-size: 14px;
+  font-weight: 300;
+}
+th{
+  font-size: 14px;
+  font-weight: 700;
+}

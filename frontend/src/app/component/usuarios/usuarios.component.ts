@@ -24,6 +24,7 @@ export class UsuariosComponent implements OnInit {
   buildingname:string =""
   errornombre:string = ""
   erroremail:string = ""
+  idseleccionado:string = ""
   
   respuestalogin:any
   constructor(private peticion:PeticionService,private msg:MensajesService) { }
@@ -76,6 +77,7 @@ export class UsuariosComponent implements OnInit {
       if (res.state == true) {
         this.msg.Agregarmensaje('success',res.mensaje,15000)
         this.cargartodas()
+        this.Nuevo()
       }
       else{
         this.msg.Agregarmensaje('danger',res.mensaje,5000)
@@ -133,6 +135,97 @@ export class UsuariosComponent implements OnInit {
         this.msg.Agregarmensaje('danger',res.mensaje,5000)
       }
      }) 
+  }
+
+  Editar(myid:string){
+
+    this.idseleccionado = myid
+    var post = {
+      host:this.peticion.urlLocal,
+      path:"/usuarios/CargarId",
+      payload:{
+        id:myid
+      }
+
+    }
+    this.peticion.Post(post.host + post.path, post.payload ).then((res:any)=>{
+      console.log(res)
+      if (res.state == true) {
+       
+       this.fname = res.usuarios[0].fname
+       this.mname = res.usuarios[0].mname
+       this.lname = res.usuarios[0].lname
+       this.slname = res.usuarios[0].slname
+       this.email = res.usuarios[0].email
+       this.phone = res.usuarios[0].phone
+       this.unitname = res.usuarios[0].unitname
+       this.complement = res.usuarios[0].complement
+       this.unitcategory = res.usuarios[0].unitcategory
+       this.buildingname = res.usuarios[0].buildingname
+
+
+
+      }
+      
+     })
+
+
+
+
+  }
+
+  Nuevo(){
+
+    this.fname = ""
+    this.mname = ""
+    this.lname = ""
+    this.slname = ""
+    this.email = ""
+    this.phone = ""
+    this.unitname = ""
+    this.complement = ""
+    this.unitcategory = ""
+    this.buildingname = ""
+    this.idseleccionado = ""
+    this.password = ""
+    this.confirmar = ""
+
+  }
+
+  Actualizar(){
+
+    var post = {
+      host:this.peticion.urlLocal,
+      path:"/usuarios/actualizar",
+      payload:{
+        id:this.idseleccionado,
+        fname:this.fname,
+        mname:this.mname,
+        lname:this.lname,
+        slname:this.slname,
+        email:this.email,
+        phone:this.phone,
+        unitname:this.unitname,
+        complement:this.complement,
+        unitcategory:this.unitcategory,
+        building:this.buildingname,
+        password:this.password,
+        confirmar:this.confirmar
+      }
+
+    }
+    this.peticion.Post(post.host + post.path, post.payload ).then((res:any)=>{
+      console.log(res)
+      if (res.state == true) {
+        this.msg.Agregarmensaje('success',res.mensaje,15000)
+        this.cargartodas()
+        this.Nuevo()
+      }
+      else{
+        this.msg.Agregarmensaje('danger',res.mensaje,5000)
+      }
+     }) 
+
   }
 
 

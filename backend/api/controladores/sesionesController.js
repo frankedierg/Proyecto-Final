@@ -247,6 +247,23 @@ sesionesController.listar = function(request,response){
         response.json({state:true,usuarios:listausuarios})
     })
 }
+
+sesionesController.CargarId = function(request,response){
+    var post = {
+        id:request.body.id
+    }
+
+    if(post.id == undefined || post.id == null || post.id == ''){
+        response.json({state:false, mensaje:"Dato ID es obligatorio"})
+        return false;
+    }
+
+
+    sesionesModel.CargarId(post, function(listausuarios){
+        response.json({state:true,usuarios:listausuarios})
+    })
+}
+
 //UPDATE
 sesionesController.actualizar = function(request,response){
     var post = {

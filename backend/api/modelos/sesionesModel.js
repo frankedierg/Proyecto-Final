@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 //ESTRUCTURA PARA LA COLECCIÓN
 var userSchema = new Schema({
+    id:String,
     fname:String,
     mname:String,
     lname:String,
@@ -135,6 +136,20 @@ sesionesModel.listar = function(post,callback){
 
     })
 }
+
+sesionesModel.CargarId = function(post,callback){
+    MyModel.find({_id:post.id},{id:1,fname:1,mname:1,lname:1,slname:1,email:1,phone:1,unitname:1,building:1,unitcategory:1,age:1},(error,registros) => {
+        if (error) {
+            console.log(error)
+            return callback({state:false, info:error})
+        }
+        else{
+            return callback(registros)
+        }
+
+    })
+}
+
 sesionesModel.actualizarnombre = function(post,callback){
 
     MyModel.findOneAndUpdate({email:post.email},

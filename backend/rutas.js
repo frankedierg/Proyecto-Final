@@ -13,6 +13,11 @@ app.post('/usuarios/adminregistro',function(request,response){
 app.post('/usuarios/listar',function(request,response){
       sesiones.listar(request,response)
 })
+
+app.post('/usuarios/CargarId',function(request,response){
+      sesiones.CargarId(request,response)
+})
+
 app.post('/usuarios/actualizar',function(request,response){
       sesiones.actualizar(request,response)
 })
