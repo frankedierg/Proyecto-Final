@@ -6,6 +6,8 @@ import { PresentacionComponent } from './component/presentacion/presentacion.com
 import {IndexAdminComponent} from './component/index-admin/index-admin.component';
 import { UsuariosComponent } from './component/usuarios/usuarios.component';
 import { Page404Component } from './component/page404/page404.component';
+import { StaffComponent } from './component/staff/staff.component';
+
 
 
 const routes: Routes = [
@@ -15,6 +17,7 @@ const routes: Routes = [
   {path:"presentacion",component:PresentacionComponent},
   {path:"usuarios",component:UsuariosComponent},
   {path: "index-admin",component:IndexAdminComponent},
+  {path:"staff",component:StaffComponent},
   {path:"**",component:Page404Component,pathMatch:"full"}
 
 

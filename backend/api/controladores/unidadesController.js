@@ -86,5 +86,74 @@ unidadesController.unidadregistro = function(request,response){
    })
 }
 
+unidadesController.listar = function(request,response){
+    var post = {}
+    unidadesModel.listar(post, function(listaunidades){
+        response.json({state:true,usuarios:listaunidades})
+    })
+}
+
+unidadesController.CargarId = function(request,response){
+    var post = {
+        id:request.body.id
+    }
+
+    if(post.id == undefined || post.id == null || post.id == ''){
+        response.json({state:false, mensaje:"Dato ID es obligatorio"})
+        return false;
+    }
+
+
+    unidadesModel.CargarId(post, function(listaunidades){
+        response.json({state:true,usuarios:listaunidades})
+    })
+}
+
+unidadesController.actualizar = function(request,response){
+    var post = {
+        unitname:request.body.unitname,
+        complement:request.body.complement,
+        unitcategory:request.body.unitcategory,
+        building:request.body.building
+        
+    }
+    
+    if(post.unitname == undefined || post.unitname == null || post.unitname == ''){
+        response.json({state:false, mensaje:"Dato nombre de la Unidad es obligatorio"})
+        return false;
+    }
+    if(post.building == undefined || post.building == null || post.building == ''){
+        response.json({state:false, mensaje:"Dato Edificio es obligatorio"})
+        return false;
+    }
+    if(post.unitcategory == undefined || post.unitcategory == null || post.unitcategory == ''){
+        response.json({state:false, mensaje:"Dato Categoria de Unidad es obligatorio"})
+        return false;
+    }
+    unidadesModel.actualizarunidad(post, function(resultado){
+        response.json(resultado)
+    })
+        
+}
+
+unidadesController.eliminar = function(request,response){
+    var post = {
+        email:request.body.email
+        
+    }
+    if(post.email == undefined || post.email == null || post.email == ''){
+        response.json({state:false, mensaje:"Dato Email es obligatorio"})
+        return false;
+    }
+    unidadesModel.eliminarunidad(post, function(resultado){
+        console.log(resultado)
+        response.json(resultado)
+                
+        })
+    }
+
+
+
+
 
 module.exports.unidadesController = unidadesController;

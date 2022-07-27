@@ -1,0 +1,145 @@
+<h2>Registro del personal de Administración</h2>
+<br>
+
+<div id="registro-staff">
+
+    <div>
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Lista de usuarios</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Agregar Usuario</a>
+        </li>
+        
+      </ul>
+    
+    
+    </div>
+    
+    
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <!-- TAB IZQUIERDO LISTADO DE USUARIOS -->
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Primer Nombre</th>
+              <th scope="col">Segundo Nombre</th>
+              <th scope="col">Primer Apellido</th>
+              <th scope="col">Segundo Apellido</th>
+              <th scope="col">Email</th>
+              <th scope="col">Editar</th>
+              <th scope="col">Eliminar</th>
+  
+            </tr>
+          </thead>
+          <tbody>
+          
+            <tr *ngFor ="let item of datos; let i = index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{item.fname}}</td>
+              <td>{{item.mname}}</td>
+              <td>{{item.lname}}</td>
+              <td>{{item.slname}}</td>
+              <td>{{item.email}}</td>
+              <td><button type="button" class="btn btn-success" (click)="Editar(item._id)"  id="boton-editar"> Editar</button></td>
+              <td><button type="button" class="btn btn-danger" (click)="Eliminar(item.email)" id="boton-eliminar">Eliminar</button></td> 
+            </tr>
+          </tbody>
+        </table>
+  
+  
+  
+     
+      </div>
+       
+      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <!-- TAB DERECHO REGISTRO DE USUARIOS -->
+        <div id="formulario-registro">
+  
+          <div>
+            <h4>Información Personal</h4>
+  
+          <div class="row">
+            <div class="col-6 col-sm-6">
+              <label for="fname" class="col-sm-6 col-form-label">Primer Nombre</label>
+              <input type="text" class="form-control" id="fname" [(ngModel)]="fname">
+              
+            </div>
+            <div class="col-6 col-sm-6">
+              <label for="fname" class="col-sm-6 col-form-label">Segundo Nombre</label>
+              <input type="text" class="form-control" id="mname" [(ngModel)]="mname">
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-6 col-sm-6">
+              <label for="fname" class="col-sm-6 col-form-label">Primer Apellido</label>
+              <input type="text" class="form-control" id="lname" [(ngModel)]="lname">
+            </div>
+            <div class="col-6 col-sm-6">
+              <label for="fname" class="col-sm-6 col-form-label">Segundo Apellido</label>
+              <input type="text" class="form-control" id="slname" [(ngModel)]="slname">
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-6 col-sm-6">
+              <label for="fname" class="col-sm-6 col-form-label">Email</label>
+              <input type="email" class="form-control" id="email" [(ngModel)]="email">
+             
+            </div>
+            <div class="col-6 col-sm-6">
+              <label for="fname" class="col-sm-6 col-form-label">Teléfono</label>
+              <input type="tel" class="form-control" id="phone" [(ngModel)]="phone">
+            </div>
+          </div>
+  
+          </div>
+          <br>
+  
+          <div>
+            
+  
+            <h4>Password</h4>
+  
+            <div class="row">
+              <div class="col-6 col-sm-6">
+                <label for="fname" class="col-sm-6 col-form-label">Password</label>
+                <input type="password" class="form-control" id="password" [(ngModel)]="password">           
+              </div>
+              <div class="col-6 col-sm-6">
+                <label for="fname" class="col-sm-6 col-form-label">Confirmar Password</label>
+                <input type="password" class="form-control" id="confirmar" [(ngModel)]="confirmar">
+              </div>
+            </div>
+  
+  
+          </div>
+          <br>
+  
+          <div class="row">
+            <div class="col-6 col-sm-6">
+              <button type="button" class="btn btn-primary" (click)="Nuevo()" id="boton-nuevo">Nuevo</button>
+              <button type="submit" class="btn btn-primary" *ngIf="idseleccionado == ''" (click)="registrar()" id="boton-guardar">Guardar</button>         
+              <button type="button" class="btn btn-success" *ngIf="idseleccionado != ''" (click)="Actualizar()" id="boton actualizar">Actualizar</button>
+  
+            </div>
+  
+            
+            
+          </div>          
+         
+        </div>
+        
+      </div>
+      
+    </div>
+    
+  
+  
+  </div>
+  
+  

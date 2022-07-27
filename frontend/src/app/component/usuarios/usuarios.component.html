@@ -1,3 +1,5 @@
+<h2>Registro de Residentes</h2>
+<br>
 <div id="registro-usuarios">
 
   <div>
@@ -27,6 +29,9 @@
             <th scope="col">Primer Apellido</th>
             <th scope="col">Segundo Apellido</th>
             <th scope="col">Email</th>
+            <th scope="col">Apartamento</th>
+            <th scope="col">Interior</th>
+            <th scope="col">Editar</th>
             <th scope="col">Eliminar</th>
 
           </tr>
@@ -40,6 +45,8 @@
             <td>{{item.lname}}</td>
             <td>{{item.slname}}</td>
             <td>{{item.email}}</td>
+            <td>{{item.unitname}}</td>
+            <td>{{item.complement}}</td>
             <td><button type="button" class="btn btn-success" (click)="Editar(item._id)"  id="boton-editar"> Editar</button></td>
             <td><button type="button" class="btn btn-danger" (click)="Eliminar(item.email)" id="boton-eliminar">Eliminar</button></td> 
           </tr>
@@ -144,9 +151,9 @@
 
         <div class="row">
           <div class="col-6 col-sm-6">
-            <button type="button" class="btn btn-primary" (click)="Nuevo()">Nuevo</button>
-            <button type="submit" class="btn btn-primary" *ngIf="idseleccionado == ''" (click)="registrar()">Guardar</button>         
-            <button type="button" class="btn btn-success" *ngIf="idseleccionado != ''" (click)="Actualizar()">Actualizar</button>
+            <button type="button" class="btn btn-primary" (click)="Nuevo()" id="boton-nuevo">Nuevo</button>
+            <button type="submit" class="btn btn-primary" *ngIf="idseleccionado == ''" (click)="registrar()" id="boton-guardar">Guardar</button>         
+            <button type="button" class="btn btn-success" *ngIf="idseleccionado != ''" (click)="Actualizar()" id="boton actualizar">Actualizar</button>
 
           </div>
 

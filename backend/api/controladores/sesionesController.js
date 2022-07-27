@@ -1,5 +1,8 @@
 var md5 = require('md5');
 var sesionesModel = require('../modelos/sesionesModel').sesionesModel
+var nodemailer = require('nodemailer');
+//const SendmailTransport = require('nodemailer/lib/sendmail-transport');
+const { config } = require('../../config');
 //CRUD
 var sesionesController = {}
 //READ
@@ -325,4 +328,49 @@ sesionesController.eliminar = function(request,response){
         })
     }
 
+
+    // Email contactenos
+    sesionesController.emailing = function(request,response){
+
+        var post = {
+            name:request.body.name,
+            email:request.body.email,
+            subject:request.body.subject,
+            content:request.body.content
+        }
+        //validaciones
+
+
+        var transporter = nodemailer.createTransport({
+            host:'smtp.gmail.com',
+            port:587,
+            secure:false,
+            requireTLS:true,
+            auth:{
+                user:'horizonapp2022@gmail.com',
+                pass:config.emailpass
+            }
+        });
+
+        let mailOptions = {
+            from:'horizonapp2022@gmail.com',
+            to:'horizonapp2022@gmail.com',
+            
+            subject:post.subject,
+            html:'<div style= "color:blue"> El usuario '+ post.name + ' '+ post.email+' nos solicita : '+post.content+'</div>'
+            
+        }
+        transporter.sendMail(mailOptions,(error,info) => {
+            if(error){
+                console.log(error.message)
+                response.json ({state:false,mensaje:error.message})
+            }
+            else{
+                response.json ({state:true,mensaje:"correo enviado"})
+            }
+        })
+    }
+
+
 module.exports.sesionesController = sesionesController;
+

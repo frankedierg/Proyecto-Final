@@ -19,7 +19,8 @@ import { PresentacionComponent } from './component/presentacion/presentacion.com
 import { IndexAdminComponent } from './component/index-admin/index-admin.component';
 import { UsuariosComponent } from './component/usuarios/usuarios.component';
 import { Page404Component } from './component/page404/page404.component';
-import { MensajesComponent } from './component/mensajes/mensajes.component';
+import { StaffComponent } from './component/staff/staff.component';
+
 
 
 
@@ -41,7 +42,8 @@ import { MensajesComponent } from './component/mensajes/mensajes.component';
     IndexAdminComponent,
     UsuariosComponent,
     Page404Component,
-    MensajesComponent,
+    StaffComponent,
+    
 
   ],
   imports: [

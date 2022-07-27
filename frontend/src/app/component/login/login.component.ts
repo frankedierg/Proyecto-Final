@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { MensajesService } from 'src/app/Servicios/mensajes.service';
 import { PeticionService } from 'src/app/Servicios/peticion.service';
 
 @Component({
@@ -10,7 +8,7 @@ import { PeticionService } from 'src/app/Servicios/peticion.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private peticion:PeticionService, private msg:MensajesService, private router:Router) { }
+  constructor(private peticion:PeticionService) { }
   email:string = "myemail@gmail.com"
   password:string = ""
   datos:any[] = []
@@ -35,17 +33,13 @@ export class LoginComponent implements OnInit {
     this.peticion.Post(post.host + post.path, post.payload ).then((res:any)=>{
       console.log(res)
       this.respuestalogin = res
-      if(res.state == true){
-        this.msg.Agregarmensaje('success', res.mensaje,10000)
-        setTimeout(()=>{
-          
-        },5000)
-        this.router.navigate(['index-admin'])
-      }
-      else{
-        this.msg.Agregarmensaje('danger', res.mensaje,5000)
-      }
-    
+      if (this.respuestalogin.state == true) {
+         window.location.assign('http://localhost:4200/index-admin')
+               
+     }
+     else{
+      window.location.assign('http://localhost:4200/login')
+     }
     })
     //FIN PETICIÓN
 

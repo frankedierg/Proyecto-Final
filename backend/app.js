@@ -3,6 +3,7 @@ var config = require('./config.js').config
 global.app = express();
 const mongoose = require('mongoose');
 
+
 mongoose.connect('mongodb://127.0.0.1:27017/'+ config.db,{useNewUrlParser:true,useUnifiedTopology:true},(error,respuesta)=>{
     if (error) {
         console.log(error)

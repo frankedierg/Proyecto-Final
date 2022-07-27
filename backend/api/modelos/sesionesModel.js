@@ -4,7 +4,6 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 //ESTRUCTURA PARA LA COLECCIÓN
 var userSchema = new Schema({
-    id:String,
     fname:String,
     mname:String,
     lname:String,
@@ -33,7 +32,8 @@ sesionesModel.registro = function(post,callback){
     instancia.lname = post.lname
     instancia.slname = post.slname
     instancia.unitname = post.unitname
-    instancia.building = post.building
+    instancia.complement = post.complement
+    instancia.buildingname = post.buildingname
     instancia.unitcategory = post.unitcategory
     instancia.email = post.email
     instancia.phone = post.phone
@@ -125,7 +125,7 @@ sesionesModel.iniciarsesion = function(post,callback){
     
 }
 sesionesModel.listar = function(post,callback){
-    MyModel.find({},{id:1,fname:1,mname:1,lname:1,slname:1,email:1,phone:1,unitname:1,building:1,unitcategory:1,age:1},(error,registros) => {
+    MyModel.find({},{id:1,fname:1,mname:1,lname:1,slname:1,email:1,phone:1,unitname:1,complement:1,unitcategory:1,buildingname:1,},(error,registros) => {
         if (error) {
             console.log(error)
             return callback({state:false, info:error})
@@ -190,46 +190,4 @@ sesionesModel.eliminarusuario = function(post,callback){
   
 }
 module.exports.sesionesModel = sesionesModel;
-
-//CREACION DE MODELO PARA LA UNIDAD RESIDENCIAL
-sesionesModel.unidadregistro = function(post,callback){
-
-    const instancia = new MyModel
-    instancia.unitname = post.unitname
-    instancia.complement = post.complement
-    instancia.buildingname = post.buildingname
-    instancia.unitcategory = post.unitcategory
-
-    instancia.save((error,unitcreated) => {
-        if(error){
-            console.log(error)
-            return callback({state:false,info:error})
-        }
-        else{
-            console.log(unitcreated)
-            return callback({state:true,info:unitcreated})
-        }
-    })
-   
-}
-sesionesModel.buscarunidad = function (post, callback){
-
-    MyModel.find({unitname:post.unitname,complement:post.complement,buildingname:post.buildingname, unitcategory:post.unitcategory},{unitname:1,buildingname:1,unitcategory:1},(error,registros) => {
-        if(error){
-            console.log(error)
-            return callback(false)
-        }
-        else{
-            console.log(registros)
-            console.log(registros.length)
-            if (registros.length > 0) {
-                return callback(true)                
-            }
-            else{
-                return callback(false)
-            }
-        }
-    })
-        
-}
 

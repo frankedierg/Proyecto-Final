@@ -1,0 +1,43 @@
+#registro-usuarios{
+    margin: 20px;
+    padding: 20px;
+   
+  }
+
+#formulario-registro{
+    padding: 30px;
+    border: 5px;
+    border-color: #000;
+    
+}
+
+#boton-editar,#boton-eliminar{
+  margin: 5px;
+  font-size: small ;
+}
+
+#boton-nuevo,#boton-guardar,#boton-actualizar{
+  margin: 5px;
+  font-size: medium;
+}
+
+label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+td{
+  font-size: 14px;
+  font-weight: 300;
+}
+th{
+  font-size: 14px;
+  font-weight: 700;
+}
+h2{
+    text-align: center;
+    padding-top: 40px;
+  }
