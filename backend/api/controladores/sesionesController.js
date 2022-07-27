@@ -45,7 +45,7 @@ sesionesController.registro = function(request,response){
     var unitname = request.body.unitname
     var complement = request.body.complement
     var unitcategory = request.body.unitcategory
-    var building = request.body.building
+    var buildingname = request.body.buildingname
     var password = request.body.password
     var confirmar= request.body.confirmar
     var rol= request.body.rol
@@ -113,7 +113,7 @@ sesionesController.registro = function(request,response){
     unitname:unitname,
     complement:complement,
     unitcategory:unitcategory,
-    building:building,
+    buildingname:buildingname,
     email: email,
     phone:phone,
     password:md5(password),

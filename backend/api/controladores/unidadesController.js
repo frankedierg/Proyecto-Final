@@ -31,15 +31,7 @@ unidadesController.unidadregistro = function(request,response){
        response.json({state:false, mensaje:"Campo categoría es obligatorio"})
        return false;
    }
-   if(unitcategory.length <=2){
-       response.json({state:false, mensaje:"El campo categoría debe ser superior a 2 caracteres"})
-       return false;
-   }
-   if(unitcategory.length >=30){
-       response.json({state:false, mensaje:"El campo categoría debe ser inferior a 30 caracteres"})
-       return false;
-   }
-   
+      
     //VALIDACIÓN NOMBRE DEL CONJUNTO RESIDENCIAL 
 
     if(buildingname == undefined || buildingname == null || buildingname == ''){

@@ -7,8 +7,9 @@ var userSchema = new Schema({
     //SCHEMA DE LA UNIDAD
     unitname:String,
     complement:String,
-    buildingname:String,
     unitcategory:String,
+    buildingname:String
+    
 
 })
 
@@ -20,8 +21,9 @@ unidadesModel.unidadregistro = function(post,callback){
     const instancia = new MyModel
     instancia.unitname = post.unitname
     instancia.complement = post.complement
-    instancia.buildingname = post.buildingname
     instancia.unitcategory = post.unitcategory
+    instancia.buildingname = post.buildingname
+   
     
 
     instancia.save((error,unitcreated) => {

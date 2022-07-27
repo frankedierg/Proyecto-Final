@@ -31,6 +31,7 @@
             <th scope="col">Email</th>
             <th scope="col">Apartamento</th>
             <th scope="col">Interior</th>
+            <th scope="col">Parqueadero</th>
             <th scope="col">Editar</th>
             <th scope="col">Eliminar</th>
 
@@ -47,6 +48,7 @@
             <td>{{item.email}}</td>
             <td>{{item.unitname}}</td>
             <td>{{item.complement}}</td>
+            <td>{{item.unitcategory}}</td>
             <td><button type="button" class="btn btn-success" (click)="Editar(item._id)"  id="boton-editar"> Editar</button></td>
             <td><button type="button" class="btn btn-danger" (click)="Eliminar(item.email)" id="boton-eliminar">Eliminar</button></td> 
           </tr>
@@ -108,18 +110,18 @@
 
         <div class="row">
           <div class="col-6 col-sm-6">
-            <label for="fname" class="col-sm-6 col-form-label">Unidad</label>
+            <label for="fname" class="col-sm-6 col-form-label">Apartamento</label>
             <input type="text" class="form-control" id="unitname" [(ngModel)]="unitname">
           </div>
           <div class="col-6 col-sm-6">
-            <label for="fname" class="col-sm-6 col-form-label">Complemento</label>
+            <label for="fname" class="col-sm-6 col-form-label">Interior</label>
             <input type="text" class="form-control" id="complement" [(ngModel)]="complement">
           </div>
         </div>
 
         <div class="row">
           <div class="col-6 col-sm-6">
-            <label for="fname" class="col-sm-6 col-form-label">Categoría</label>
+            <label for="fname" class="col-sm-6 col-form-label">Parqueadero</label>
             <input type="text" class="form-control" id="unitcategory" [(ngModel)]="unitcategory">
           </div>
           <div class="col-6 col-sm-6">
