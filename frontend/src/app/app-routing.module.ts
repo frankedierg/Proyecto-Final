@@ -7,6 +7,7 @@ import {IndexAdminComponent} from './component/index-admin/index-admin.component
 import { UsuariosComponent } from './component/usuarios/usuarios.component';
 import { Page404Component } from './component/page404/page404.component';
 import { StaffComponent } from './component/staff/staff.component';
+import { VisitantesComponent } from './component/visitantes/visitantes.component';
 
 
 
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path:"usuarios",component:UsuariosComponent},
   {path: "index-admin",component:IndexAdminComponent},
   {path:"staff",component:StaffComponent},
+  {path:"visitantes",component:VisitantesComponent},
   {path:"**",component:Page404Component,pathMatch:"full"}
 
 
