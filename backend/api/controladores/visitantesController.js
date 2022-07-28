@@ -1,5 +1,7 @@
+var visitantesModel = require('../modelos/visitantesModel').visitantesModel
+var visitantesController = {}
 //CREATE- REGISTRO USUARIOS-RESIDENTES
-visitantesController.registro = function(request,response){
+visitantesController.visitanteregistro = function(request,response){
 
     var name = request.body.name
     var lname = request.body.lname
@@ -9,17 +11,38 @@ visitantesController.registro = function(request,response){
     var vehicle = request.body.vehicle
       //VALIDACIÓN PRIMER NOMBRE
    if(name == undefined || name == null || name == ''){
-       response.json({state:false, mensaje:"Dato primer nombre es obligatorio"})
+       response.json({state:false, mensaje:"Dato nombre es obligatorio"})
        return false;
    }
    
     //VALIDACIÓN APELLIDO
 
    if(lname == undefined || lname == null || lname == ''){
-       response.json({state:false, mensaje:"Dato Primer Apellido es obligatorio"})
+       response.json({state:false, mensaje:"Dato Apellido es obligatorio"})
        return false;
    }
+
+       //VALIDACIÓN DOCUMENTO
+
+       if(document == undefined || document == null || document == ''){
+        response.json({state:false, mensaje:"Dato Documento es obligatorio"})
+        return false;
+    }
+
+        //VALIDACIÓN UNIDAD-APARTAMENTO
+
+   if(unitname == undefined || unitname == null || unitname == ''){
+    response.json({state:false, mensaje:"Dato Apartamento es obligatorio"})
+    return false;
+    }
    
+        //VALIDACIÓN INTERIOR
+
+   if(complement == undefined || complement == null || complement == ''){
+    response.json({state:false, mensaje:"Dato Interior es obligatorio"})
+    return false;
+    }
+
     
 
        
@@ -28,20 +51,30 @@ visitantesController.registro = function(request,response){
     lname: lname,
     document:document,
     unitname:unitname,
-    complement:complement
+    complement:complement,
+    vehicle:vehicle
 }
-visitantesModel.registro(post, function(dato){
 
-    if (dato.state == true) {
-        response.json({state:true, mensaje:'Usuario registrado Correctamente'})
-
+visitantesModel.buscarvisitante(post,function(existe){
+        
+    if (existe == true) {
+        response.json({state:false, mensaje:"El visitante no ha registrado salida"})
+        return false
     }
     else{
-        response.json({state:false, mensaje:'Se presentó un error al guardar'})
-    }
-           
-})
+        visitantesModel.visitanteregistro(post, function(dato){
 
+            if (dato.state == true) {
+                response.json({state:true, mensaje:'Visitante registrado Correctamente'})
+
+            }
+            else{
+                response.json({state:false, mensaje:'Se presentó un error al registrar'})
+            }
+                   
+        })
+   }
+   })
    
 }
 
@@ -50,7 +83,7 @@ visitantesModel.registro(post, function(dato){
 visitantesController.listar = function(request,response){
     var post = {}
     visitantesModel.listar(post, function(listarvisitantes){
-        response.json({state:true,usuarios:listarvisitantes})
+        response.json({state:true,visitantes:listarvisitantes})
     })
 }
 
@@ -76,11 +109,9 @@ visitantesController.actualizar = function(request,response){
         name:request.body.name,
         lname:request.body.lname,
         document:request.body.document,
-        vehicle:request.body.vehicle,
         unitname:request.body.unitname,
         complement:request.body.complement,
-        unitcategory:request.body.unitcategory,
-        building:request.body.building
+        vehicle:request.body.vehicle
         
     }
     
@@ -98,27 +129,18 @@ visitantesController.actualizar = function(request,response){
         return false;
     }
 
-    if(post.vehicle == undefined || post.vehicle == null || post.vehicle == ''){
-        response.json({state:false, mensaje:"Dato placa el vehiculo es obligatorio"})
+    if(post.unitname == undefined || post.unitname == null || post.unitname == ''){
+        response.json({state:false, mensaje:"Dato Apartamento es obligatorio"})
         return false;
     }
 
-
+    if(post.complement == undefined || post.complement == null || post.complement == ''){
+        response.json({state:false, mensaje:"Dato Interior de Unidad es obligatorio"})
+        return false;
+    }
 
     
-    if(post.unitname == undefined || post.unitname == null || post.unitname == ''){
-        response.json({state:false, mensaje:"Dato nombre de la Unidad es obligatorio"})
-        return false;
-    }
-    if(post.building == undefined || post.building == null || post.building == ''){
-        response.json({state:false, mensaje:"Dato Edificio es obligatorio"})
-        return false;
-    }
-    if(post.unitcategory == undefined || post.unitcategory == null || post.unitcategory == ''){
-        response.json({state:false, mensaje:"Dato Categoria de Unidad es obligatorio"})
-        return false;
-    }
-    sesionesModel.actualizarnombre(post, function(resultado){
+    visitantesModel.actualizarvisitante(post, function(resultado){
         response.json(resultado)
     })
         
@@ -140,3 +162,5 @@ visitantesController.eliminar = function(request,response){
                 
         })
     }
+
+    module.exports.visitantesController = visitantesController;

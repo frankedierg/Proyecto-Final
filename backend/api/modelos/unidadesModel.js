@@ -67,7 +67,7 @@ unidadesModel.posicionunidad = function (post, callback){
 }
 
 unidadesModel.listar = function(post,callback){
-    MyModel.find({},{id:1,unitname:1,complement:1,building:1,unitcategory:1},(error,registros) => {
+    MyModel.find({},{id:1,unitname:1,complement:1,buildingname:1,unitcategory:1},(error,registros) => {
         if (error) {
             console.log(error)
             return callback({state:false, info:error})
@@ -115,7 +115,7 @@ unidadesModel.actualizarunidad = function(post,callback){
 }
 unidadesModel.eliminarunidad = function(post,callback){
 
-    MyModel.findOneAndDelete({unitname:post.unitname} ,(error,eliminado)=>{
+    MyModel.findOneAndDelete({unitname:post.unitname,complement:post.complement} ,(error,eliminado)=>{
         if (error) {
             console.log(error)
             return callback({state:false, info:error})

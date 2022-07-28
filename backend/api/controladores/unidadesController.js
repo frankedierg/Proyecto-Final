@@ -81,7 +81,7 @@ unidadesController.unidadregistro = function(request,response){
 unidadesController.listar = function(request,response){
     var post = {}
     unidadesModel.listar(post, function(listaunidades){
-        response.json({state:true,usuarios:listaunidades})
+        response.json({state:true,unidades:listaunidades})
     })
 }
 
@@ -106,7 +106,7 @@ unidadesController.actualizar = function(request,response){
         unitname:request.body.unitname,
         complement:request.body.complement,
         unitcategory:request.body.unitcategory,
-        building:request.body.building
+        buildingname:request.body.buildingname
         
     }
     
@@ -114,14 +114,19 @@ unidadesController.actualizar = function(request,response){
         response.json({state:false, mensaje:"Dato nombre de la Unidad es obligatorio"})
         return false;
     }
-    if(post.building == undefined || post.building == null || post.building == ''){
-        response.json({state:false, mensaje:"Dato Edificio es obligatorio"})
+    if(post.complement == undefined || post.complement == null || post.complement == ''){
+        response.json({state:false, mensaje:"Dato Complemento de Unidad es obligatorio"})
         return false;
     }
     if(post.unitcategory == undefined || post.unitcategory == null || post.unitcategory == ''){
         response.json({state:false, mensaje:"Dato Categoria de Unidad es obligatorio"})
         return false;
     }
+    if(post.buildingname == undefined || post.buildingname == null || post.buildingname == ''){
+        response.json({state:false, mensaje:"Dato Edificio es obligatorio"})
+        return false;
+    }
+   
     unidadesModel.actualizarunidad(post, function(resultado){
         response.json(resultado)
     })
@@ -130,13 +135,18 @@ unidadesController.actualizar = function(request,response){
 
 unidadesController.eliminar = function(request,response){
     var post = {
-        email:request.body.email
-        
+        unitname:request.body.unitname,
+        complement:request.body.complement        
     }
-    if(post.email == undefined || post.email == null || post.email == ''){
-        response.json({state:false, mensaje:"Dato Email es obligatorio"})
+    if(post.unitname == undefined || post.unitname == null || post.unitname == ''){
+        response.json({state:false, mensaje:"Dato Apartamento es obligatorio"})
         return false;
     }
+    if(post.complement == undefined || post.complement == null || post.complement == ''){
+        response.json({state:false, mensaje:"Dato Interior de Unidad es obligatorio"})
+        return false;
+    }
+    
     unidadesModel.eliminarunidad(post, function(resultado){
         console.log(resultado)
         response.json(resultado)

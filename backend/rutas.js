@@ -1,7 +1,7 @@
-const { sesionesController } = require('./api/controladores/sesionesController')
-
 var sesiones = require('./api/controladores/sesionesController').sesionesController
 var unidades = require('./api/controladores/unidadesController').unidadesController
+var visitantes = require('./api/controladores/visitantesController').visitantesController
+
 //APIS REGISTRO USUARIOS
 app.post('/usuarios/login',function(request,response){
    sesiones.iniciarsesion(request,response)
@@ -40,9 +40,11 @@ app.post('/unidades/CargarId',function(request,response){
 app.post('/unidades/actualizar',function(request,response){
 unidades.actualizar(request,response)
 })
-app.post('/visitantes/eliminar',function(request,response){
-      unidades.eliminar(request,response)
-})
+app.post('/unidades/eliminar',function(request,response){
+   unidades.eliminar(request,response)
+   })
+   
+
 
 
 //ENVÍO DE CORREOS
@@ -51,7 +53,7 @@ app.post('/usuarios/emailing',function(request,response){
    })
 //REGISTRO DE VISITANTES
    app.post('/visitantes/registro',function(request,response){
-      visitantes.registro(request,response)
+      visitantes.visitanteregistro(request,response)
    })
   
    app.post('/visitantes/listar',function(request,response){
@@ -62,7 +64,7 @@ app.post('/usuarios/emailing',function(request,response){
       visitantes.CargarId(request,response)
    })
    app.post('/visitantes/actualizar',function(request,response){
-         sesiones.actualizar(request,response)
+         visitantes.actualizar(request,response)
    })
    app.post('/visitantes/eliminar',function(request,response){
          visitantes.eliminar(request,response)
