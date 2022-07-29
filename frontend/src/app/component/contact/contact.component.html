@@ -1,5 +1,5 @@
 
-<section class="container py-5"id="contacts">
+<section class="container py-5"id="contact">
 
   <h1 class="col-12 col-xl-8 h2 text-left text-primary pt-3">Contactenos</h1>
   <h2 class="col-12 col-xl-8 h4 text-left regular-400">Inicie su camino a una mejor administración de recursos </h2>
@@ -9,18 +9,18 @@
 
 <!-- Start Contact Form -->
 <div class="col-lg-8 ">
-  <form class="contact-form row" method="post" action="#" role="form">
+  <form class="contact-form row" method="POST" action="/usuarios/emailing" role="form">
 
       <div class="col-lg-6 mb-4">
           <div class="form-floating">
-              <input type="text" class="form-control form-control-lg light-300" id="floatingname" name="inputname" placeholder="Name">
+              <input type="text" class="form-control form-control-lg light-300" id="name" name="name" placeholder="Name" autofocus>
               <label for="floatingname light-300">Nombre y apellido</label>
           </div>
       </div><!-- End Input Name -->
 
       <div class="col-lg-6 mb-4">
           <div class="form-floating">
-              <input type="text" class="form-control form-control-lg light-300" id="floatingemail" name="inputemail" placeholder="Email">
+              <input type="email" class="form-control form-control-lg light-300" id="email" name="email" placeholder="Email">
               <label for="floatingemail light-300">Email</label>
           </div>
       </div><!-- End Input Email -->
@@ -41,20 +41,20 @@
 
       <div class="col-12">
           <div class="form-floating mb-4">
-              <input type="text" class="form-control form-control-lg light-300" id="floatingsubject" name="inputsubject" placeholder="Subject">
+              <input type="text" class="form-control form-control-lg light-300" id="subject" name="subject" placeholder="Subject">
               <label for="floatingsubject light-300">Asunto</label>
           </div>
       </div><!-- End Input Subject -->
 
       <div class="col-12">
           <div class="form-floating mb-3">
-              <textarea class="form-control light-300" rows="8" placeholder="Message" id="floatingtextarea"></textarea>
+              <textarea class="form-control light-300" rows="8" placeholder="Message" id="content"></textarea>
               <label for="floatingtextarea light-300">Su mensaje</label>
           </div>
       </div><!-- End Textarea Message -->
 
       <div class="col-md-12 col-12 m-auto text-end">
-          <button type="submit"  class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300" (click)="emailing()">Enviar mensaje</button>
+          <button type="submit"  class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300" (click)='emailing()'>Enviar mensaje</button>
       </div>
 
   </form>

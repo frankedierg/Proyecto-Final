@@ -2,7 +2,8 @@ var express = require('express')
 var config = require('./config.js').config
 global.app = express();
 const mongoose = require('mongoose');
-
+global.path = require('path')
+global.appRoot = path.resolve(__dirname)
 
 mongoose.connect('mongodb://127.0.0.1:27017/'+ config.db,{useNewUrlParser:true,useUnifiedTopology:true},(error,respuesta)=>{
     if (error) {
@@ -20,7 +21,9 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 
 //ACCESO A CORS
-var cors = require('cors')
+var cors = require('cors');
+
+
 
 app.use(cors({
   origin: function(origin, callback){
@@ -45,6 +48,7 @@ require('./rutas')
 
 
 app.use('/',express.static(__dirname + '/Pagina'))//Expone el frontend
+app.use('/imagenes',express.static(__dirname + '/imagenes'))//Expone el frontend subir archivos
 
 app.listen(config.puerto, function(){
     console.log ('servidor funcionando por puerto: '+ config.puerto)
