@@ -20,6 +20,7 @@ import { IndexAdminComponent } from './component/index-admin/index-admin.compone
 import { UsuariosComponent } from './component/usuarios/usuarios.component';
 import { Page404Component } from './component/page404/page404.component';
 import { StaffComponent } from './component/staff/staff.component';
+import { VisitantesComponent } from './component/visitantes/visitantes.component';
 
 
 
@@ -43,6 +44,7 @@ import { StaffComponent } from './component/staff/staff.component';
     UsuariosComponent,
     Page404Component,
     StaffComponent,
+    VisitantesComponent,
     
 
   ],

@@ -1,6 +1,6 @@
 var visitantesModel = require('../modelos/visitantesModel').visitantesModel
 var visitantesController = {}
-//CREATE- REGISTRO USUARIOS-RESIDENTES
+//CREATE- REGISTRO USUARIOS-VISITANTES
 visitantesController.visitanteregistro = function(request,response){
 
     var name = request.body.name
@@ -98,8 +98,8 @@ visitantesController.CargarId = function(request,response){
     }
 
 
-    visitantesModel.CargarId(post, function(listausuarios){
-        response.json({state:true,usuarios:listausuarios})
+    visitantesModel.CargarId(post, function(listarvisitantes){
+        response.json({state:true,visitantes:listarvisitantes})
     })
 }
 
