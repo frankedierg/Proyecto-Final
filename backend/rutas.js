@@ -2,6 +2,7 @@ var sesiones = require('./api/controladores/sesionesController').sesionesControl
 var unidades = require('./api/controladores/unidadesController').unidadesController
 var visitantes = require('./api/controladores/visitantesController').visitantesController
 
+
 //APIS REGISTRO USUARIOS
 app.post('/usuarios/login',function(request,response){
    sesiones.iniciarsesion(request,response)
@@ -49,8 +50,54 @@ app.post('/unidades/eliminar',function(request,response){
 
 //ENVÍO DE CORREOS
 app.post('/usuarios/emailing',function(request,response){
-      visitantes.emailing(request,response)
+      sesiones.emailing(request,response)
    })
+//Subir archivos
+const multer = require('multer')
+
+app.post('/subir',function(request,response){
+
+    var post = {
+        ruta:'/imagenes'
+    }
+
+    var upload = multer({
+        storage: multer.diskStorage({
+           
+            destination:function(request,file,callback){
+                callback(null,appRoot + post.ruta)
+            },
+            filename:function(request,file,callback){
+                
+                callback(null,file.originalname)
+            }
+        }),
+        fileFilter: function(request,file,callback){
+            var ext = path.extname(file.originalname)
+            console.log(ext)
+            if(ext !== '.pdf' && ext !== '.jpg' && ext !== '.gif'  && ext !== '.jpeg' && ext !== '.tif' ){
+                return callback({state:false,mensaje:'Solo soporta imagenes'},null)
+            }
+            callback(null,true)
+
+        }
+    }).single('userFile')
+
+    upload(request,response,function(err){
+        if(err){
+            console.log(err),
+            response.json(err)
+        }
+        else{
+            console.log('ok')
+            response.json({state:true,mensaje:'Archivo Cargado'})
+        }
+    })
+
+
+})
+
+  
 //REGISTRO DE VISITANTES
    app.post('/visitantes/registro',function(request,response){
       visitantes.visitanteregistro(request,response)

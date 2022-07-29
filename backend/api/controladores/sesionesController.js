@@ -336,7 +336,7 @@ sesionesController.eliminar = function(request,response){
             name:request.body.name,
             email:request.body.email,
             subject:request.body.subject,
-            content:request.body.content
+            content:request.body.content,
         }
         //validaciones
 
@@ -355,9 +355,9 @@ sesionesController.eliminar = function(request,response){
         let mailOptions = {
             from:'horizonapp2022@gmail.com',
             to:'horizonapp2022@gmail.com',
-            
+            cc: post.email,
             subject:post.subject,
-            html:'<div style= "color:blue"> El usuario '+ post.name + ' '+ post.email+' nos solicita : '+post.content+'</div>'
+            html:'<div style="color:blue;"> El usuario '+ post.name +' y correo '+ post.email+' nos solicita : '+post.content+'</div>'
             
         }
         transporter.sendMail(mailOptions,(error,info) => {
