@@ -124,6 +124,33 @@ sesionesModel.iniciarsesion = function(post,callback){
     })
     
 }
+
+sesionesModel.adminlogin = function(post,callback){
+
+    MyModel.find({email:post.email, password:post.password},{id:1,name:1,lname:1,email:1},(error,registros) => {
+        if (error) {
+            console.log(error)
+            return callback({state:false, info:error})
+        }
+        else{
+           // return callback(registros)
+           if (registros.length > 0) {
+            return callback(true)
+            
+           }
+           else{
+            return callback(false)
+
+           }
+        }
+
+    })
+    
+}
+
+
+
+
 sesionesModel.listar = function(post,callback){
     MyModel.find({},{id:1,fname:1,mname:1,lname:1,slname:1,email:1,phone:1,unitname:1,complement:1,unitcategory:1,buildingname:1,},(error,registros) => {
         if (error) {

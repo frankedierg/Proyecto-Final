@@ -21,6 +21,9 @@ import { UsuariosComponent } from './component/usuarios/usuarios.component';
 import { Page404Component } from './component/page404/page404.component';
 import { StaffComponent } from './component/staff/staff.component';
 import { VisitantesComponent } from './component/visitantes/visitantes.component';
+import { ReservasComponent } from './component/reservas/reservas.component';
+import { AdminloginComponent } from './component/adminlogin/adminlogin.component';
+import { PanelresidentesComponent } from './component/panelresidentes/panelresidentes.component';
 
 
 
@@ -45,6 +48,9 @@ import { VisitantesComponent } from './component/visitantes/visitantes.component
     Page404Component,
     StaffComponent,
     VisitantesComponent,
+    ReservasComponent,
+    AdminloginComponent,
+    PanelresidentesComponent,
     
 
   ],

@@ -3,21 +3,21 @@ import { MensajesService } from 'src/app/Servicios/mensajes.service';
 import { PeticionService } from 'src/app/Servicios/peticion.service';
 
 @Component({
-  selector: 'app-visitantes',
-  templateUrl: './visitantes.component.html',
-  styleUrls: ['./visitantes.component.css']
+  selector: 'app-reservas',
+  templateUrl: './reservas.component.html',
+  styleUrls: ['./reservas.component.css']
 })
-export class VisitantesComponent implements OnInit {
-
+export class ReservasComponent implements OnInit {
   _id:string =""
-  name:string = ""
-  lname:string = ""
-  document:string = ""
+  nombre:string =""
+  apellido:string = ""
   unitname:string = ""
   complement:string = ""
-  vehicle:string = ""
+  initdate:string =""
+  enddate:string =""
+  area:string=""
   errornombre:string = ""
-  errordocumento:string = ""
+  errorapellido:string = ""
   idseleccionado:string = ""
   
   respuestalogin:any
@@ -29,34 +29,35 @@ export class VisitantesComponent implements OnInit {
  
   validar(){// validación en el frontend
     this.errornombre = ""
-    this.errordocumento = ""
-    if(this.name == "" || this.name == undefined || this.name == null){
+    this.errorapellido = ""
+    if(this.nombre == "" || this.nombre == undefined || this.nombre == null){
       this.errornombre = "Este campo es obligatorio"
     }
 
-    if(this.document == "" || this.document == undefined || this.document == null){
-      this.errordocumento = "El campo ducumento es obligatorio"
+    if(this.apellido == "" || this.apellido == undefined || this.apellido == null){
+      this.errorapellido = "El campo apellido es obligatorio"
     }
   }
 
   datos:any[] = [
-    {name:this.name,lname:this.lname,document:this.document,unitname:this.unitname}
+    {nombre:this.nombre,apellido:this.apellido,unitname:this.unitname,complement:this.complement,initdate:this.initdate,enddate:this.enddate,area:this.area}
   ]
   registrar(){
     //swal("Good job!", "You clicked the button!", "success");
     this.validar()
-    if (this.errordocumento == "" && this.errornombre == "") {
+    if (this.errornombre == "" && this.errorapellido == "") {
       //PETICIÓN
     var post = {
       host:this.peticion.urlLocal,
-      path:"/visitantes/registro",
+      path:"/reservas/registro",
       payload:{
-        name:this.name,
-        lname:this.lname,
-        document:this.document,
+        nombre:this.nombre,
+        apellido: this.apellido,
         unitname:this.unitname,
         complement:this.complement,
-        vehicle:this.vehicle,
+        initdate:this.initdate,
+        enddate:this.enddate,
+        area:this.area
       }
 
     }
@@ -86,7 +87,7 @@ export class VisitantesComponent implements OnInit {
       //PETICIÓN
     var post = {
       host:this.peticion.urlLocal,
-      path:"/visitantes/listar",
+      path:"/reservas/listar",
       payload:{
         
       }
@@ -94,7 +95,7 @@ export class VisitantesComponent implements OnInit {
     }
     this.peticion.Post(post.host + post.path, post.payload ).then((res:any)=>{
       console.log(res)
-      this.datos = res.visitantes
+      this.datos = res.reservas
     })
     
     
@@ -106,7 +107,7 @@ export class VisitantesComponent implements OnInit {
   
     var post = {
       host:this.peticion.urlLocal,
-      path:"/visitantes/eliminar",
+      path:"/reservas/eliminar",
       payload:{
         email:email
        
@@ -130,7 +131,7 @@ export class VisitantesComponent implements OnInit {
     this.idseleccionado = myid
     var post = {
       host:this.peticion.urlLocal,
-      path:"/visitantes/CargarId",
+      path:"/reservas/CargarId",
       payload:{
         id:myid
       }
@@ -140,12 +141,15 @@ export class VisitantesComponent implements OnInit {
       console.log(res)
       if (res.state == true) {
        
-       this.name = res.visitantes[0].name
-       this.lname = res.visitantes[0].lname
-       this.document = res.visitantes[0].document
-       this.unitname = res.visitantes[0].unitname
-       this.complement = res.visitantes[0].complement
-       this.vehicle = res.visitantes[0].vehicle
+      this.nombre = res.reservas[0].nombre
+      this.apellido = res.reservas[0].apellido
+      this.unitname = res.reservas[0].unitname
+      this.complement = res.reservas[0].complement
+      this.initdate = res.reservas[0].initdate
+      this.enddate = res.reservas[0].enddate
+
+
+
       }
       
      })
@@ -157,28 +161,31 @@ export class VisitantesComponent implements OnInit {
 
   Nuevo(){
 
-    this.name = ""
-    this.lname = ""
-    this.document = ""
+   this.nombre= ""
+    this.apellido = ""
     this.unitname = ""
     this.complement = ""
-    this.vehicle = ""
+    this.initdate = ""
+    this.enddate = ""
+    this.area = ""
   }
 
   Actualizar(){
 
     var post = {
       host:this.peticion.urlLocal,
-      path:"/visitantes/actualizar",
+      path:"/reservas/actualizar",
       payload:{
         id:this.idseleccionado,
-        name:this.name,
-        lname:this.lname,
-        document:this.document,
+        nombre:this.nombre,
+        apellido: this.apellido,
         unitname:this.unitname,
         complement:this.complement,
-        vehicle:this.vehicle,
-        }
+        initdate:this.initdate,
+        enddate:this.enddate,
+        area:this.area
+        
+      }
 
     }
     this.peticion.Post(post.host + post.path, post.payload ).then((res:any)=>{

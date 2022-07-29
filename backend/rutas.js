@@ -1,6 +1,8 @@
 var sesiones = require('./api/controladores/sesionesController').sesionesController
 var unidades = require('./api/controladores/unidadesController').unidadesController
 var visitantes = require('./api/controladores/visitantesController').visitantesController
+var reservas = require('./api/controladores/reservasController').reservasController
+
 
 //APIS REGISTRO USUARIOS
 app.post('/usuarios/login',function(request,response){
@@ -68,4 +70,24 @@ app.post('/usuarios/emailing',function(request,response){
    })
    app.post('/visitantes/eliminar',function(request,response){
          visitantes.eliminar(request,response)
+   })
+
+
+   //REGISTRO DE RESERVAS
+   app.post('/reservas/registro',function(request,response){
+      reservas.reservasregistro(request,response)
+   })
+  
+   app.post('/reservas/listar',function(request,response){
+         reservas.listar(request,response)
+   })
+   
+   app.post('/reservas/CargarId',function(request,response){
+      reservas.CargarId(request,response)
+   })
+   app.post('/reservas/actualizar',function(request,response){
+         reservas.actualizar(request,response)
+   })
+   app.post('/reservas/eliminar',function(request,response){
+         reservas.eliminar(request,response)
    })

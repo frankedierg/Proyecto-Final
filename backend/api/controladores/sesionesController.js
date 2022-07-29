@@ -5,7 +5,7 @@ var nodemailer = require('nodemailer');
 const { config } = require('../../config');
 //CRUD
 var sesionesController = {}
-//READ
+//INICIO DE SESION USUARIOS
 sesionesController.iniciarsesion = function(request,response){
 
     var post = {
@@ -33,6 +33,35 @@ sesionesController.iniciarsesion = function(request,response){
     })
   
 }
+//INICIO DE SESION ADMINISTRADOR
+sesionesController.adminlogin = function(request,response){
+
+    var post = {
+        email:request.body.email,
+        password:md5(request.body.password)
+    }
+
+    if(post.email == undefined || post.email == null || post.email == ''){
+       response.json({state:false, mensaje:"Dato email es obligatorio"})
+       return false;
+   }
+
+   if(post.password == undefined || post.password == null || post.password == ''){
+       response.json({state:false, mensaje:"Dato Password es obligatorio"})
+       return false;
+   }
+
+    sesionesModel.adminlogin(post,function(existe){
+        if (existe == true) {
+            response.json({state:true,mensaje:"Usuario logueado correctamente"})
+        }
+        else{
+            response.json({state:false, mensaje:"Credenciales inválidas"})
+        }
+    })
+  
+}
+
 //CREATE- REGISTRO USUARIOS-RESIDENTES
 sesionesController.registro = function(request,response){
 
