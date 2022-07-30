@@ -48,7 +48,7 @@ require('./rutas')
 
 
 app.use('/',express.static(__dirname + '/Pagina'))//Expone el frontend
-app.use('/imagenes',express.static(__dirname + '/imagenes'))//Expone el frontend subir archivos
+app.use('/backend/archivos',express.static(__dirname + '/backend/archivos'))//Expone el frontend subir archivos
 
 app.listen(config.puerto, function(){
     console.log ('servidor funcionando por puerto: '+ config.puerto)

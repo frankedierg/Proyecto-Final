@@ -51,25 +51,25 @@ app.post('/unidades/eliminar',function(request,response){
 
 
 //ENVÍO DE CORREOS
-app.post('/usuarios/emailing',function(request,response){
+   app.post('/usuarios/emailing',function(request,response){
       sesiones.emailing(request,response)
    })
 //Subir archivos
 const multer = require('multer')
 
-app.post('/subir',function(request,response){
+app.post('/subir',function(req,res){
 
-    var post = {
-        ruta:'/imagenes'
-    }
+   var post1 = {};
+   post1.ruta='../backend/archivos'
+
 
     var upload = multer({
         storage: multer.diskStorage({
            
-            destination:function(request,file,callback){
-                callback(null,appRoot + post.ruta)
+            destination:function(req,file,callback){
+                callback(null,appRoot + post1.ruta)
             },
-            filename:function(request,file,callback){
+            filename:function(req,file,callback){
                 
                 callback(null,file.originalname)
             }
@@ -78,21 +78,21 @@ app.post('/subir',function(request,response){
             var ext = path.extname(file.originalname)
             console.log(ext)
             if(ext !== '.pdf' && ext !== '.jpg' && ext !== '.gif'  && ext !== '.jpeg' && ext !== '.tif' ){
-                return callback({state:false,mensaje:'Solo soporta imagenes'},null)
+                return callback({state:false,mensaje:'Solo soporta pdf e imagenes'},null)
             }
             callback(null,true)
 
         }
     }).single('userFile')
 
-    upload(request,response,function(err){
+    upload(req,res,function(err){
         if(err){
             console.log(err),
-            response.json(err)
+            res.json(err)
         }
         else{
             console.log('ok')
-            response.json({state:true,mensaje:'Archivo Cargado'})
+            res.json({state:true,mensaje:'Archivo Cargado'})
         }
     })
 
