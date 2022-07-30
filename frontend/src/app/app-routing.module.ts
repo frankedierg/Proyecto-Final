@@ -10,6 +10,7 @@ import { StaffComponent } from './component/staff/staff.component';
 import { VisitantesComponent } from './component/visitantes/visitantes.component';
 import { ReservasComponent } from './component/reservas/reservas.component';
 import { AdminloginComponent } from './component/adminlogin/adminlogin.component';
+import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 
 
 
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path:"staff",component:StaffComponent},
   {path:"visitantes",component:VisitantesComponent},
   {path:"reservas",component:ReservasComponent},
+  {path:"forgot-password",component:ForgotPasswordComponent},
   {path:"**",component:Page404Component,pathMatch:"full"},
   
 

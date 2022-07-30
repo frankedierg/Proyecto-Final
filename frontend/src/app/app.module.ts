@@ -24,6 +24,7 @@ import { VisitantesComponent } from './component/visitantes/visitantes.component
 import { ReservasComponent } from './component/reservas/reservas.component';
 import { AdminloginComponent } from './component/adminlogin/adminlogin.component';
 import { PanelresidentesComponent } from './component/panelresidentes/panelresidentes.component';
+import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 
 
 
@@ -52,6 +53,7 @@ import { PanelresidentesComponent } from './component/panelresidentes/panelresid
     ReservasComponent,
     AdminloginComponent,
     PanelresidentesComponent,
+    ForgotPasswordComponent,
    
     
 
