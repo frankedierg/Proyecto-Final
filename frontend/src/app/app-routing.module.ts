@@ -24,7 +24,8 @@ const routes: Routes = [
   {path:"staff",component:StaffComponent},
   {path:"visitantes",component:VisitantesComponent},
   {path:"reservas",component:ReservasComponent},
-  {path:"**",component:Page404Component,pathMatch:"full"}
+  {path:"**",component:Page404Component,pathMatch:"full"},
+  
 
 
 ];

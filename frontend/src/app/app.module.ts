@@ -29,6 +29,7 @@ import { PanelresidentesComponent } from './component/panelresidentes/panelresid
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +52,7 @@ import { PanelresidentesComponent } from './component/panelresidentes/panelresid
     ReservasComponent,
     AdminloginComponent,
     PanelresidentesComponent,
+   
     
 
   ],
