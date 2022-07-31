@@ -99,6 +99,49 @@ app.post('/subir',function(req,res){
 
 })
 
+//subir logo
+app.post('/subirlogo',function(req,res){
+
+   var post1 = {};
+   post1.ruta='../backend/archivos'
+
+
+    var upload = multer({
+        storage: multer.diskStorage({
+           
+            destination:function(req,file,callback){
+                callback(null,appRoot + post1.ruta)
+            },
+            filename:function(req,file,callback){
+                
+                callback(null,'logo'+ path.extname(file.originalname))
+            }
+        }),
+        fileFilter: function(request,file,callback){
+            var ext = path.extname(file.originalname)
+            console.log(ext)
+            if( ext !== '.jpg'  ){
+                return callback({state:false,mensaje:'Solo soporta imagenes jpg'},null)
+            }
+            callback(null,true)
+
+        }
+    }).single('userFile')
+
+    upload(req,res,function(err){
+        if(err){
+            console.log(err),
+            res.json(err)
+        }
+        else{
+            console.log('ok')
+            res.json({state:true,mensaje:'Archivo Cargado'})
+        }
+    })
+
+
+})
+
   
 //REGISTRO DE VISITANTES
    app.post('/visitantes/registro',function(request,response){
