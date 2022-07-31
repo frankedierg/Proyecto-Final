@@ -1,35 +1,29 @@
-import { Injectable, Input } from '@angular/core';
+import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class SubirarchivosService {
 
+  constructor(private http: HttpClient) { }
+
+upload(file: File,url:string,inputName:string): Observable<HttpEvent<any>> {
+
+  const formData:FormData = new FormData()
+  formData.append(inputName,file)
+
+  const req = new HttpRequest('POST',url,formData, {
+    reportProgress:true,
+    responseType:'json'
+  })
+
+  return this.http.request(req)
   
+}
 
-    selectedFiles:any;
-    archivoseleccionado:any;
-    progress = 0;
-    message = '';
-    booocultarbtns: boolean = false
-
-    constructor(private uploadService: SubirarchivosService) { }
-
-    @Input() urldestino:string = ""
-    @Input() path: String = ""
-    @Input() fileName: String = ""
-
-    ngOnInit(): void {
-
-    }
-
-    selectFile(event:any): void{
-      this.selectedFiles = event.target.files;
-    }
-
-    upload(): void{
-      this.progress = 0;
-      this.archivoseleccionado = this.selectedFiles.item(0);
-    }
+  
 
 }

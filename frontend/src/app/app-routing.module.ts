@@ -10,8 +10,12 @@ import { StaffComponent } from './component/staff/staff.component';
 import { VisitantesComponent } from './component/visitantes/visitantes.component';
 import { ReservasComponent } from './component/reservas/reservas.component';
 import { AdminloginComponent } from './component/adminlogin/adminlogin.component';
+<<<<<<< HEAD
 import { PanelresidentesComponent } from './component/panelresidentes/panelresidentes.component';
 import { SecondarynavbarComponent } from './component/secondarynavbar/secondarynavbar.component';
+=======
+import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
+>>>>>>> 122b908064f3d226af1bd349293e91f3f5c008a9
 
 
 
@@ -26,9 +30,15 @@ const routes: Routes = [
   {path:"staff",component:StaffComponent},
   {path:"visitantes",component:VisitantesComponent},
   {path:"reservas",component:ReservasComponent},
+<<<<<<< HEAD
   {path:"panelresidentes",component:PanelresidentesComponent},
   {path:"secondarynavbar",component:SecondarynavbarComponent},
   {path:"**",component:Page404Component,pathMatch:"full"}
+=======
+  {path:"forgot-password",component:ForgotPasswordComponent},
+  {path:"**",component:Page404Component,pathMatch:"full"},
+  
+>>>>>>> 122b908064f3d226af1bd349293e91f3f5c008a9
 
 
 ];

@@ -196,7 +196,7 @@ sesionesModel.actualizarnombre = function(post,callback){
             return callback({state:false, info:error})
         }
         else{
-            return callback({state:true, mensaje:'Usuario modificado'})
+            return callback({state:true,mensaje:'Usuario modificado'})
         }
 
     })

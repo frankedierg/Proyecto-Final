@@ -68,26 +68,26 @@ app.post('/unidades/eliminar',function(request,response){
 
 
 //ENVÍO DE CORREOS
-app.post('/usuarios/emailing',function(request,response){
+   app.post('/usuarios/emailing',function(request,response){
       sesiones.emailing(request,response)
    })
 const { request, response, json } = require('express')
 //Subir archivos
 const multer = require('multer')
 
-app.post('/subir',function(request,response){
+app.post('/subir',function(req,res){
 
-    var post = {
-        ruta:'/imagenes'
-    }
+   var post1 = {};
+   post1.ruta='/archivos'
+
 
     var upload = multer({
         storage: multer.diskStorage({
            
-            destination:function(request,file,callback){
-                callback(null,appRoot + post.ruta)
+            destination:function(req,file,callback){
+                callback(null,appRoot + post1.ruta)
             },
-            filename:function(request,file,callback){
+            filename:function(req,file,callback){
                 
                 callback(null,file.originalname)
             }
@@ -96,21 +96,64 @@ app.post('/subir',function(request,response){
             var ext = path.extname(file.originalname)
             console.log(ext)
             if(ext !== '.pdf' && ext !== '.jpg' && ext !== '.gif'  && ext !== '.jpeg' && ext !== '.tif' ){
-                return callback({state:false,mensaje:'Solo soporta imagenes'},null)
+                return callback({state:false,mensaje:'Solo soporta pdf e imagenes'},null)
             }
             callback(null,true)
 
         }
     }).single('userFile')
 
-    upload(request,response,function(err){
+    upload(req,res,function(err){
         if(err){
             console.log(err),
-            response.json(err)
+            res.json(err)
         }
         else{
             console.log('ok')
-            response.json({state:true,mensaje:'Archivo Cargado'})
+            res.json({state:true,mensaje:'Archivo Cargado'})
+        }
+    })
+
+
+})
+
+//subir logo
+app.post('/subirlogo',function(req,res){
+
+   var post1 = {};
+   post1.ruta='../backend/archivos'
+
+
+    var upload = multer({
+        storage: multer.diskStorage({
+           
+            destination:function(req,file,callback){
+                callback(null,appRoot + post1.ruta)
+            },
+            filename:function(req,file,callback){
+                
+                callback(null,'logo'+ path.extname(file.originalname))
+            }
+        }),
+        fileFilter: function(request,file,callback){
+            var ext = path.extname(file.originalname)
+            console.log(ext)
+            if( ext !== '.jpg'  ){
+                return callback({state:false,mensaje:'Solo soporta imagenes jpg'},null)
+            }
+            callback(null,true)
+
+        }
+    }).single('userFile')
+
+    upload(req,res,function(err){
+        if(err){
+            console.log(err),
+            res.json(err)
+        }
+        else{
+            console.log('ok')
+            res.json({state:true,mensaje:'Archivo Cargado'})
         }
     })
 
@@ -156,7 +199,13 @@ app.post('/subir',function(request,response){
    app.post('/reservas/eliminar',function(request,response){
          reservas.eliminar(request,response)
    })
+<<<<<<< HEAD
    //API PARA IDENTIFICAR SI EL USUARIO ESTA LOGUEADO
    app.post('/status',function(request,response){
       response.json({perfil:request.session})
    })
+=======
+
+   //Forgot Password
+   
+>>>>>>> 122b908064f3d226af1bd349293e91f3f5c008a9

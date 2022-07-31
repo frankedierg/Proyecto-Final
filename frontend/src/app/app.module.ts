@@ -24,9 +24,15 @@ import { VisitantesComponent } from './component/visitantes/visitantes.component
 import { ReservasComponent } from './component/reservas/reservas.component';
 import { AdminloginComponent } from './component/adminlogin/adminlogin.component';
 import { PanelresidentesComponent } from './component/panelresidentes/panelresidentes.component';
+<<<<<<< HEAD
 import { SecondarynavbarComponent } from './component/secondarynavbar/secondarynavbar.component';
 import { CookieService } from 'ngx-cookie-service';
 import { InterceptorService } from './interceptors/interceptor';
+=======
+import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
+import { SubirarchivosComponent } from './component/subirarchivos/subirarchivos.component';
+
+>>>>>>> 122b908064f3d226af1bd349293e91f3f5c008a9
 
 
 
@@ -54,7 +60,13 @@ import { InterceptorService } from './interceptors/interceptor';
     ReservasComponent,
     AdminloginComponent,
     PanelresidentesComponent,
+<<<<<<< HEAD
     SecondarynavbarComponent,
+=======
+    ForgotPasswordComponent,
+    SubirarchivosComponent,
+   
+>>>>>>> 122b908064f3d226af1bd349293e91f3f5c008a9
     
 
   ],
