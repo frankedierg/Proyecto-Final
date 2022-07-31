@@ -28,6 +28,12 @@ export class UsuariosComponent implements OnInit {
   
   respuestalogin:any
   constructor(private peticion:PeticionService,private msg:MensajesService) { }
+
+  item: any = {
+    path:'/subir',
+    destino:'http://localhost:3000'
+  }
+
   ngOnInit(): void {
     this.cargartodas()
   }
