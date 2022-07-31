@@ -44,6 +44,23 @@ app.use(cors({
 }));
 //FIN ACCESO A CORS
 
+//CONFIGURACIÓN INICIAL PARA LAS SESIONES
+var session = require("express-session")({
+    secret:"mifrasesecreta",
+    resave:true,
+    saveUninitialized:true,
+    cookie:{
+        path:'/',
+        httpOnly:true,
+        maxAge:300000
+    },
+    name: "usuarios",
+    rolling:true
+    
+})
+app.use(session)
+//FIN CONFIGURACION SESIONES
+
 require('./rutas')
 
 

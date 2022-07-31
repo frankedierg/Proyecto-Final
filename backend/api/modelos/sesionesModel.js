@@ -11,7 +11,7 @@ var userSchema = new Schema({
     email:String,
     phone:String,
     password:String,
-    rol:String,
+    perfil:Number,
     //SCHEMA DE LA UNIDAD
     unitname:String,
     complement:String,
@@ -38,7 +38,7 @@ sesionesModel.registro = function(post,callback){
     instancia.email = post.email
     instancia.phone = post.phone
     instancia.password = post.password
-    instancia.rol = post.rol
+    instancia.perfil = 0
 
     instancia.save((error,usercreated) => {
         if(error){
@@ -62,7 +62,7 @@ sesionesModel.adminregistro = function(post,callback){
     instancia.email = post.email
     instancia.phone = post.phone
     instancia.password = post.password
-    instancia.rol = post.rol
+    instancia.perfil = 1
 
     instancia.save((error,usercreated) => {
         if(error){
@@ -104,7 +104,7 @@ sesionesModel.posicionemail = function (post, callback){
 }
 sesionesModel.iniciarsesion = function(post,callback){
 
-    MyModel.find({email:post.email, password:post.password},{id:1,name:1,lname:1,email:1,age:1},(error,registros) => {
+    MyModel.find({email:post.email, password:post.password},{id:1,name:1,lname:1,email:1,perfil:1},(error,registros) => {
         if (error) {
             console.log(error)
             return callback({state:false, info:error})
@@ -112,11 +112,11 @@ sesionesModel.iniciarsesion = function(post,callback){
         else{
            // return callback(registros)
            if (registros.length > 0) {
-            return callback(true)
+            return callback({state:true,registros:registros})
             
            }
            else{
-            return callback(false)
+            return callback({state:false})
 
            }
         }
@@ -127,7 +127,7 @@ sesionesModel.iniciarsesion = function(post,callback){
 
 sesionesModel.adminlogin = function(post,callback){
 
-    MyModel.find({email:post.email, password:post.password},{id:1,name:1,lname:1,email:1},(error,registros) => {
+    MyModel.find({email:post.email, password:post.password},{id:1,name:1,lname:1,email:1,perfil:1},(error,registros) => {
         if (error) {
             console.log(error)
             return callback({state:false, info:error})
@@ -135,11 +135,11 @@ sesionesModel.adminlogin = function(post,callback){
         else{
            // return callback(registros)
            if (registros.length > 0) {
-            return callback(true)
+            return callback({state:true,registros:registros})
             
            }
            else{
-            return callback(false)
+            return callback({state:false})
 
            }
         }

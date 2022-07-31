@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MensajesService } from 'src/app/Servicios/mensajes.service';
 import { PeticionService } from 'src/app/Servicios/peticion.service';
+declare var swal:any
 
 @Component({
   selector: 'app-visitantes',
@@ -43,7 +44,6 @@ export class VisitantesComponent implements OnInit {
     {name:this.name,lname:this.lname,document:this.document,unitname:this.unitname}
   ]
   registrar(){
-    //swal("Good job!", "You clicked the button!", "success");
     this.validar()
     if (this.errordocumento == "" && this.errornombre == "") {
       //PETICIÓN
@@ -63,17 +63,20 @@ export class VisitantesComponent implements OnInit {
     this.peticion.Post(post.host + post.path, post.payload ).then((res:any)=>{
       console.log(res)
       if (res.state == true) {
+        swal("Visitante registrado!", "Haz click para cerrar!", "success");
         this.msg.Agregarmensaje('success',res.mensaje,15000)
         this.cargartodas()
         this.Nuevo()
       }
       else{
+        swal("El visitante ya existe!", "Haz click para cerrar!", "error");
         this.msg.Agregarmensaje('danger',res.mensaje,5000)
       }
      }) 
       
     }
     else{
+      swal("Error en el formulario!", "Haz click para cerrar!", "error");
       this.msg.Agregarmensaje('danger','Error en el formulario',5000)
     }
     
@@ -116,10 +119,12 @@ export class VisitantesComponent implements OnInit {
     this.peticion.Post(post.host + post.path, post.payload ).then((res:any)=>{
       console.log(res)
       if (res.state == true) {
+        swal("Visitante eliminado!", "Haz click para cerrar!", "success");
         this.msg.Agregarmensaje('success',res.mensaje,5000)
         this.cargartodas()
       }
       else{
+        swal("No se eliminó el visitante!", "Haz click para cerrar!", "error");
         this.msg.Agregarmensaje('danger',res.mensaje,5000)
       }
      }) 
@@ -184,11 +189,13 @@ export class VisitantesComponent implements OnInit {
     this.peticion.Post(post.host + post.path, post.payload ).then((res:any)=>{
       console.log(res)
       if (res.state == true) {
+        swal("Visitante Actualizado!", "Haz click para cerrar!", "success");
         this.msg.Agregarmensaje('success',res.mensaje,15000)
         this.cargartodas()
         this.Nuevo()
       }
       else{
+        swal("No se actualizó el visitante!", "Haz click para cerrar!", "error");
         this.msg.Agregarmensaje('danger',res.mensaje,5000)
       }
      }) 
