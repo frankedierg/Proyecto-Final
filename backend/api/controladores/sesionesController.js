@@ -261,8 +261,9 @@ sesionesController.adminregistro = function(request,response){
         sesionesModel.adminregistro(post, function(dato){
 
             if (dato.state == true) {
+                
                 response.json({state:true, mensaje:'Usuario registrado Correctamente'})
-
+                
             }
             else{
                 response.json({state:false, mensaje:'Se presentó un error al guardar'})
