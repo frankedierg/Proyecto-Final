@@ -60,7 +60,7 @@ const multer = require('multer')
 app.post('/subir',function(req,res){
 
    var post1 = {};
-   post1.ruta='../backend/archivos'
+   post1.ruta='/archivos'
 
 
     var upload = multer({

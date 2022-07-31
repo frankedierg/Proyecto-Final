@@ -25,7 +25,7 @@ import { ReservasComponent } from './component/reservas/reservas.component';
 import { AdminloginComponent } from './component/adminlogin/adminlogin.component';
 import { PanelresidentesComponent } from './component/panelresidentes/panelresidentes.component';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
-import { SubirarchivosComponent } from './componentes/subirarchivos/subirarchivos.component';
+import { SubirarchivosComponent } from './component/subirarchivos/subirarchivos.component';
 
 
 
