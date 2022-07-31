@@ -10,6 +10,8 @@ import { StaffComponent } from './component/staff/staff.component';
 import { VisitantesComponent } from './component/visitantes/visitantes.component';
 import { ReservasComponent } from './component/reservas/reservas.component';
 import { AdminloginComponent } from './component/adminlogin/adminlogin.component';
+import { PanelresidentesComponent } from './component/panelresidentes/panelresidentes.component';
+import { SecondarynavbarComponent } from './component/secondarynavbar/secondarynavbar.component';
 
 
 
@@ -24,6 +26,8 @@ const routes: Routes = [
   {path:"staff",component:StaffComponent},
   {path:"visitantes",component:VisitantesComponent},
   {path:"reservas",component:ReservasComponent},
+  {path:"panelresidentes",component:PanelresidentesComponent},
+  {path:"secondarynavbar",component:SecondarynavbarComponent},
   {path:"**",component:Page404Component,pathMatch:"full"}
 
 

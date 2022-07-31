@@ -24,6 +24,9 @@ import { VisitantesComponent } from './component/visitantes/visitantes.component
 import { ReservasComponent } from './component/reservas/reservas.component';
 import { AdminloginComponent } from './component/adminlogin/adminlogin.component';
 import { PanelresidentesComponent } from './component/panelresidentes/panelresidentes.component';
+import { SecondarynavbarComponent } from './component/secondarynavbar/secondarynavbar.component';
+import { CookieService } from 'ngx-cookie-service';
+import { InterceptorService } from './interceptors/interceptor';
 
 
 
@@ -51,6 +54,7 @@ import { PanelresidentesComponent } from './component/panelresidentes/panelresid
     ReservasComponent,
     AdminloginComponent,
     PanelresidentesComponent,
+    SecondarynavbarComponent,
     
 
   ],
@@ -60,7 +64,14 @@ import { PanelresidentesComponent } from './component/panelresidentes/panelresid
     FormsModule,
     HttpClientModule //Libreria para hacer peticiones
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+  //   {
+  //     provide: HTTP_INTERCEPTORS,
+  //     useClass: InterceptorService,
+  //     multi:true
+  //   },
+  //   CookieService
+],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,6 +2,7 @@ var config = {}
 config.puerto = 3000
 config.db = "frank"
 config.emailpass = "wacjgettnyrzrvkc"
+config.sessionsecret = "abcd123456"
 
 config.EnabledCors = true
 config.origins =[

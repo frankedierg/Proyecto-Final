@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MensajesService } from 'src/app/Servicios/mensajes.service';
 import { PeticionService } from 'src/app/Servicios/peticion.service';
+declare var swal:any
 
 @Component({
   selector: 'app-adminlogin',
@@ -8,7 +11,7 @@ import { PeticionService } from 'src/app/Servicios/peticion.service';
 })
 export class AdminloginComponent implements OnInit {
 
-  constructor(private peticion:PeticionService) { }
+  constructor(private peticion:PeticionService,private msg:MensajesService,private router:Router) { }
   email:string = "myemail@gmail.com"
   password:string = ""
   datos:any[] = []
@@ -20,10 +23,11 @@ export class AdminloginComponent implements OnInit {
   }
 
   iniciar(){
+    localStorage.setItem('inicio','1')
     //INICIO PETICIÓN
     var post = {
       host:this.peticion.urlLocal,
-      path:"/usuarios/login",
+      path:"/usuarios/adminlogin",
       payload:{
         email:this.email,
         password:this.password
@@ -34,11 +38,19 @@ export class AdminloginComponent implements OnInit {
       console.log(res)
       this.respuestalogin = res
       if (this.respuestalogin.state == true) {
-         window.location.assign('http://localhost:4200/index-admin')
+        swal("Se ha logueado correctamente!", "Haz click para cerrar!", "success");
+        this.msg.Agregarmensaje('success',res.mensaje,10000)
+        setTimeout(() => {
+          this.router.navigate(['/index-admin'])
+        },2000);
+        
+       
                
      }
      else{
-      window.location.assign('http://localhost:4200/login')
+      swal("Credenciales Inválidas!", "Haz click para cerrar!", "error");
+      this.msg.Agregarmensaje('danger',res.mensaje,5000)
+      
      }
     })
     //FIN PETICIÓN

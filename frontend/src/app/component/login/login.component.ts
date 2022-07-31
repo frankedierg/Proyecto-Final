@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       console.log(res)
       this.respuestalogin = res
       if (this.respuestalogin.state == true) {
-         window.location.assign('http://localhost:4200/index-admin')
+         window.location.assign('http://localhost:4200/panelresidentes')
                
      }
      else{

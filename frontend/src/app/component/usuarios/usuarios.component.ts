@@ -49,7 +49,7 @@ export class UsuariosComponent implements OnInit {
     {fname:this.fname,mname:this.mname,lname:this.lname,slname:this.slname,email:this.email}
   ]
   registrar(){
-    //swal("Good job!", "You clicked the button!", "success");
+    
     this.validar()
     if (this.erroremail == "" && this.errornombre == "") {
       //PETICIÓN
@@ -75,17 +75,20 @@ export class UsuariosComponent implements OnInit {
     this.peticion.Post(post.host + post.path, post.payload ).then((res:any)=>{
       console.log(res)
       if (res.state == true) {
+        swal("Usuario Creado!", "Haz click para cerrar!", "success");
         this.msg.Agregarmensaje('success',res.mensaje,15000)
         this.cargartodas()
         this.Nuevo()
       }
       else{
+        swal("Usuario ya existe!", "Haz click para cerrar!", "error");
         this.msg.Agregarmensaje('danger',res.mensaje,5000)
       }
      }) 
       
     }
     else{
+      swal("Error en el formulario!", "Haz click para cerrar!", "error");
       this.msg.Agregarmensaje('danger','Error en el formulario',5000)
     }
     
@@ -128,10 +131,12 @@ export class UsuariosComponent implements OnInit {
     this.peticion.Post(post.host + post.path, post.payload ).then((res:any)=>{
       console.log(res)
       if (res.state == true) {
+        swal("Usuario eliminado!", "Haz click para cerrar!", "success");
         this.msg.Agregarmensaje('success',res.mensaje,5000)
         this.cargartodas()
       }
       else{
+        swal("No se eliminó el usuario!", "Haz click para cerrar!", "error");
         this.msg.Agregarmensaje('danger',res.mensaje,5000)
       }
      }) 
@@ -217,11 +222,13 @@ export class UsuariosComponent implements OnInit {
     this.peticion.Post(post.host + post.path, post.payload ).then((res:any)=>{
       console.log(res)
       if (res.state == true) {
+        swal("Usuario actualizado!", "Haz click para cerrar!", "success");
         this.msg.Agregarmensaje('success',res.mensaje,15000)
         this.cargartodas()
         this.Nuevo()
       }
       else{
+        swal("No se actualizó el usuario!", "Haz click para cerrar!", "error");
         this.msg.Agregarmensaje('danger',res.mensaje,5000)
       }
      }) 

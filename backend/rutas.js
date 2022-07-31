@@ -5,9 +5,26 @@ var reservas = require('./api/controladores/reservasController').reservasControl
 
 
 
-//APIS REGISTRO USUARIOS
+//APIS REGISTRO USUARIOS 
+
+var validarperfil = function(request,response,next){
+   if(request.session.perfil == 1){
+   
+      next()
+
+   }
+   else{
+      response.json({mensaje:"Sin permisos"})
+   }
+}
+
+
 app.post('/usuarios/login',function(request,response){
    sesiones.iniciarsesion(request,response)
+})
+
+app.post('/usuarios/adminlogin',function(request,response){
+   sesiones.adminlogin(request,response)
 })
 app.post('/usuarios/registro',function(request,response){
    sesiones.registro(request,response)
@@ -54,6 +71,7 @@ app.post('/unidades/eliminar',function(request,response){
 app.post('/usuarios/emailing',function(request,response){
       sesiones.emailing(request,response)
    })
+const { request, response, json } = require('express')
 //Subir archivos
 const multer = require('multer')
 
@@ -137,4 +155,8 @@ app.post('/subir',function(request,response){
    })
    app.post('/reservas/eliminar',function(request,response){
          reservas.eliminar(request,response)
+   })
+   //API PARA IDENTIFICAR SI EL USUARIO ESTA LOGUEADO
+   app.post('/status',function(request,response){
+      response.json({perfil:request.session})
    })

@@ -24,8 +24,10 @@ sesionesController.iniciarsesion = function(request,response){
    }
 
     sesionesModel.iniciarsesion(post,function(existe){
-        if (existe == true) {
-            response.json({state:true,mensaje:"Usuario logueado correctamente"})
+        if (existe.state == true) {
+            console.log(existe)
+            request.session.perfil = existe.registros[0].perfil
+            response.json({state:true,mensaje:"Usuario logueado correctamente",perfil:existe.registros[0].perfil})
         }
         else{
             response.json({state:false, mensaje:"Credenciales inválidas"})
@@ -39,7 +41,7 @@ sesionesController.adminlogin = function(request,response){
     var post = {
         email:request.body.email,
         password:md5(request.body.password)
-    }
+    } 
 
     if(post.email == undefined || post.email == null || post.email == ''){
        response.json({state:false, mensaje:"Dato email es obligatorio"})
@@ -52,8 +54,10 @@ sesionesController.adminlogin = function(request,response){
    }
 
     sesionesModel.adminlogin(post,function(existe){
-        if (existe == true) {
-            response.json({state:true,mensaje:"Usuario logueado correctamente"})
+        if (existe.state == true) {
+            console.log(existe)
+            request.session.perfil = existe.registros[0].perfil
+            response.json({state:true,mensaje:"Usuario logueado correctamente",perfil:existe.registros[0].perfil})
         }
         else{
             response.json({state:false, mensaje:"Credenciales inválidas"})
@@ -181,7 +185,7 @@ sesionesController.adminregistro = function(request,response){
     var phone = request.body.phone
     var password = request.body.password
     var confirmar= request.body.confirmar
-    var rol= request.body.rol
+    var perfil = 0
    console.log(fname)
    console.log(lname)
    console.log(email)
