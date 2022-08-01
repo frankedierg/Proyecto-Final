@@ -199,13 +199,7 @@ app.post('/subirlogo',function(req,res){
    app.post('/reservas/eliminar',function(request,response){
          reservas.eliminar(request,response)
    })
-<<<<<<< HEAD
    //API PARA IDENTIFICAR SI EL USUARIO ESTA LOGUEADO
    app.post('/status',function(request,response){
       response.json({perfil:request.session})
    })
-=======
-
-   //Forgot Password
-   
->>>>>>> 122b908064f3d226af1bd349293e91f3f5c008a9
