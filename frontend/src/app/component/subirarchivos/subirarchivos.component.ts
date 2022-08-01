@@ -1,8 +1,8 @@
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { SubirarchivosService } from 'src/app/Servicios/subirarchivos.service';
-
 //import { SubirarchivosService } from 'src/app/Servicios/subirarchivos.service';
+
+import { SubirarchivosService } from 'src/app/Servicios/subirarchivos.service';
 
 
 @Component({

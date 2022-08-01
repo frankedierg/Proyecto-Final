@@ -3,7 +3,6 @@ import { MensajesService } from 'src/app/Servicios/mensajes.service';
 import { PeticionService } from 'src/app/Servicios/peticion.service';
 declare var swal:any
 
-
 @Component({
   selector: 'app-usuarios',
   templateUrl: './usuarios.component.html',
