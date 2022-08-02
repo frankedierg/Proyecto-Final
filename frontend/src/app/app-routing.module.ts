@@ -13,6 +13,7 @@ import { AdminloginComponent } from './component/adminlogin/adminlogin.component
 import { PanelresidentesComponent } from './component/panelresidentes/panelresidentes.component';
 import { SecondarynavbarComponent } from './component/secondarynavbar/secondarynavbar.component';
 import { SubirarchivosComponent } from './component/subirarchivos/subirarchivos.component';
+import { DocumentosComponent } from './component/documentos/documentos.component';
 
 
 
@@ -30,6 +31,7 @@ const routes: Routes = [
   {path:"subirarchivos",component:SubirarchivosComponent},
   {path:"panelresidentes",component:PanelresidentesComponent},
   {path:"secondarynavbar",component:SecondarynavbarComponent},
+  {path:"documentos",component:DocumentosComponent},
   {path:"**",component:Page404Component,pathMatch:"full"}
 
 
