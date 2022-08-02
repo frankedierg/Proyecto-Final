@@ -49,3 +49,9 @@ h2,h4{
     border-color: #ebebeb;
     border-radius: 10px;
 }
+
+#panel{
+  display: grid;
+  grid-template-columns: 20% 80%;
+
+}

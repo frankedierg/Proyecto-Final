@@ -2,6 +2,8 @@ var sesiones = require('./api/controladores/sesionesController').sesionesControl
 var unidades = require('./api/controladores/unidadesController').unidadesController
 var visitantes = require('./api/controladores/visitantesController').visitantesController
 var reservas = require('./api/controladores/reservasController').reservasController
+var pagos = require('./api/controladores/pagosController').pagosController
+
 
 
 
@@ -202,4 +204,22 @@ app.post('/subirlogo',function(req,res){
    //API PARA IDENTIFICAR SI EL USUARIO ESTA LOGUEADO
    app.post('/status',function(request,response){
       response.json({perfil:request.session})
+   })
+
+   //PAGOS ADMON
+   app.post('/pagos/registro',function(request,response){
+      pagos.pagosregistro(request,response)
+   })
+   app.post('/pagos/listar',function(request,response){
+      pagos.listar(request,response)
+   })
+
+   app.post('/pagos/CargarId',function(request,response){
+      pagos.CargarId(request,response)
+   })
+   app.post('/pagos/actualizar',function(request,response){
+         pagos.actualizar(request,response)
+   })
+   app.post('/pagos/eliminar',function(request,response){
+         pagos.eliminar(request,response)
    })

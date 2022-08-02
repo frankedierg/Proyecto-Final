@@ -14,6 +14,7 @@ import { PanelresidentesComponent } from './component/panelresidentes/panelresid
 import { SecondarynavbarComponent } from './component/secondarynavbar/secondarynavbar.component';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 import { SubirarchivosComponent } from './component/subirarchivos/subirarchivos.component';
+import { CuotasAdmonComponent } from './component/cuotas-admon/cuotas-admon.component';
 
 
 
@@ -32,6 +33,7 @@ const routes: Routes = [
   {path:"panelresidentes",component:PanelresidentesComponent},
   {path:"secondarynavbar",component:SecondarynavbarComponent},
   {path:"subirarchivos",component:SubirarchivosComponent},
+  {path:"cuotas-admon",component:CuotasAdmonComponent},
   {path:"**",component:Page404Component,pathMatch:"full"}
 
 

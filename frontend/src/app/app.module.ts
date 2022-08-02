@@ -28,6 +28,8 @@ import { SecondarynavbarComponent } from './component/secondarynavbar/secondaryn
 import { CookieService } from 'ngx-cookie-service';
 import { InterceptorService } from './interceptors/interceptor';
 import { SubirarchivosComponent } from './component/subirarchivos/subirarchivos.component';
+import { NavbarAdminComponent } from './component/navbar-admin/navbar-admin.component';
+import { CuotasAdmonComponent } from './component/cuotas-admon/cuotas-admon.component';
 
 
 
@@ -56,7 +58,9 @@ import { SubirarchivosComponent } from './component/subirarchivos/subirarchivos.
     AdminloginComponent,
     PanelresidentesComponent,
     SecondarynavbarComponent,
-    SubirarchivosComponent
+    SubirarchivosComponent,
+    NavbarAdminComponent,
+    CuotasAdmonComponent
     
 
   ],
