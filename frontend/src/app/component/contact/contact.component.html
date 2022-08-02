@@ -9,7 +9,7 @@
 
 <!-- Start Contact Form -->
 <div class="col-lg-8 ">
-  <form class="contact-form row" method="POST" action="/usuarios/emailing" role="form">
+  <form  id="miForm" class="contact-form row" method="POST" action="/usuarios/emailing" role="form">
 
       <div class="col-lg-6 mb-4">
           <div class="form-floating">
@@ -54,12 +54,12 @@
       </div><!-- End Textarea Message -->
 
       <div class="col-md-12 col-12 m-auto text-end">
-          <button type="submit"  class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300" (click)='emailing()'>Enviar mensaje</button>
+          <button type="reset"  class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300" (click)='emailing()'>Enviar mensaje</button>
       </div>
 
   </form>
+
 </div>
 <!-- End Contact Form -->
 
 
-</section>

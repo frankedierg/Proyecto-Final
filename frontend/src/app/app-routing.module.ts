@@ -26,7 +26,7 @@ const routes: Routes = [
   {path:"home",component:HomeComponent},
   {path:"presentacion",component:PresentacionComponent},
   {path:"usuarios",component:UsuariosComponent},
-  {path: "index-admin",component:IndexAdminComponent},
+  {path:"index-admin",component:IndexAdminComponent},
   {path:"staff",component:StaffComponent},
   {path:"visitantes",component:VisitantesComponent},
   {path:"reservas",component:ReservasComponent},
