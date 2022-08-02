@@ -12,8 +12,10 @@ import { ReservasComponent } from './component/reservas/reservas.component';
 import { AdminloginComponent } from './component/adminlogin/adminlogin.component';
 import { PanelresidentesComponent } from './component/panelresidentes/panelresidentes.component';
 import { SecondarynavbarComponent } from './component/secondarynavbar/secondarynavbar.component';
+import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 import { SubirarchivosComponent } from './component/subirarchivos/subirarchivos.component';
 import { DocumentosComponent } from './component/documentos/documentos.component';
+
 
 
 
@@ -28,7 +30,6 @@ const routes: Routes = [
   {path:"staff",component:StaffComponent},
   {path:"visitantes",component:VisitantesComponent},
   {path:"reservas",component:ReservasComponent},
-  {path:"subirarchivos",component:SubirarchivosComponent},
   {path:"panelresidentes",component:PanelresidentesComponent},
   {path:"secondarynavbar",component:SecondarynavbarComponent},
   {path:"documentos",component:DocumentosComponent},

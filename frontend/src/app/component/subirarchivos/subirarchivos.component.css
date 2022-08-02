@@ -1,0 +1,13 @@
+#cargararchivos{
+    display:grid;
+    grid-template-columns: 50% 50%;
+    margin: 10px;
+    padding: 10px;
+    border:solid;
+    border-color: #ebebeb;
+    border-radius: 20px;
+}
+#botoncargar,#seleccionar{
+    margin-left: 10px;
+    margin-right: 10px;
+}
