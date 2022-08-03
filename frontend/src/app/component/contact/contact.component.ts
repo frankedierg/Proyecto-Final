@@ -15,9 +15,9 @@ export class ContactComponent implements OnInit {
   constructor(private emailpeticion:PeticionService) {
    
    }
-   name: String = "post.name"
-   email: String = "post.email"
-   subject: String ="post.subject"
+   name: String = "{{post.name}}"
+   email: String = ""
+   subject: String =""
    content: String = ""
 
   ngOnInit(): void {

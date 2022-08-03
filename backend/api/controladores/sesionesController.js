@@ -375,6 +375,7 @@ sesionesController.eliminar = function(request,response){
         //validaciones
 
 
+
         var transporter = nodemailer.createTransport({
             host:'smtp.gmail.com',
             port:587,
