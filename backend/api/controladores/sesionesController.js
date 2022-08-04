@@ -77,11 +77,11 @@ sesionesController.registro = function(request,response){
     var phone = request.body.phone
     var unitname = request.body.unitname
     var complement = request.body.complement
-    var unitcategory = request.body.unitcategory
+    var parking = request.body.parking
     var buildingname = request.body.buildingname
     var password = request.body.password
     var confirmar= request.body.confirmar
-    var rol= request.body.rol
+    var perfil= request.body.perfil
    console.log(fname)
    console.log(lname)
    console.log(email)
@@ -145,12 +145,12 @@ sesionesController.registro = function(request,response){
     slname:slname,
     unitname:unitname,
     complement:complement,
-    unitcategory:unitcategory,
+    parking:parking,
     buildingname:buildingname,
     email: email,
     phone:phone,
     password:md5(password),
-    rol:rol
+    perfil:perfil
    }
 
      sesionesModel.buscaremail(post,function(existe){
@@ -251,7 +251,7 @@ sesionesController.adminregistro = function(request,response){
     email: email,
     phone:phone,
     password:md5(password),
-    rol:rol
+    perfil:perfil
     
    }
 
@@ -312,7 +312,7 @@ sesionesController.actualizar = function(request,response){
         phone:request.body.phone,
         unitname:request.body.unitname,
         complement:request.body.complement,
-        unitcategory:request.body.unitcategory,
+        parking:request.body.parking,
         building:request.body.building
         
     }
@@ -336,8 +336,8 @@ sesionesController.actualizar = function(request,response){
         response.json({state:false, mensaje:"Dato Edificio es obligatorio"})
         return false;
     }
-    if(post.unitcategory == undefined || post.unitcategory == null || post.unitcategory == ''){
-        response.json({state:false, mensaje:"Dato Categoria de Unidad es obligatorio"})
+    if(post.parking == undefined || post.parking == null || post.parking == ''){
+        response.json({state:false, mensaje:"Dato parqueadero de Unidad es obligatorio"})
         return false;
     }
     sesionesModel.actualizarnombre(post, function(resultado){

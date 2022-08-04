@@ -3,6 +3,7 @@ var unidades = require('./api/controladores/unidadesController').unidadesControl
 var visitantes = require('./api/controladores/visitantesController').visitantesController
 var reservas = require('./api/controladores/reservasController').reservasController
 var pagos = require('./api/controladores/pagosController').pagosController
+var admin = require('./api/controladores/adminController').adminController
 
 
 
@@ -20,19 +21,13 @@ var validarperfil = function(request,response,next){
    }
 }
 
-
 app.post('/usuarios/login',function(request,response){
    sesiones.iniciarsesion(request,response)
 })
 
-app.post('/usuarios/adminlogin',function(request,response){
-   sesiones.adminlogin(request,response)
-})
+
 app.post('/usuarios/registro',function(request,response){
    sesiones.registro(request,response)
-})
-app.post('/usuarios/adminregistro',function(request,response){
-   sesiones.adminregistro(request,response)
 })
 app.post('/usuarios/listar',function(request,response){
       sesiones.listar(request,response)
@@ -47,6 +42,30 @@ app.post('/usuarios/actualizar',function(request,response){
 app.post('/usuarios/eliminar',function(request,response){
       sesiones.eliminar(request,response)
 })
+//APIS REGISTRO USUARIOS DE ADMINISTRACIÓN
+app.post('/admin/registro',function(request,response){
+   admin.registro(request,response)
+})
+
+app.post('/admin/login',function(request,response){
+   admin.iniciarsesion(request,response)
+})
+
+
+app.post('/admin/listar',function(request,response){
+   admin.listar(request,response)
+})
+
+app.post('/admin/CargarId',function(request,response){
+admin.CargarId(request,response)
+})
+app.post('/admin/actualizar',function(request,response){
+   admin.actualizar(request,response)
+})
+app.post('/admin/eliminar',function(request,response){
+   admin.eliminar(request,response)
+})
+
 
 //APIS REGISTRO UNIDAD RESIDENCIAL
 app.post('/unidades/unidadregistro',function(request,response){

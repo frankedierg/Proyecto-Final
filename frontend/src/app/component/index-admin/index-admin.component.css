@@ -17,6 +17,10 @@
   
   a:hover{
     text-decoration: none;
+    border:solid 3px #bebebe;
+    width: 165px;
+
+    
   }
   
   #sidebar-container{

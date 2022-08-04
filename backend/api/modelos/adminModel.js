@@ -1,4 +1,4 @@
-var sesionesModel = {}
+var adminModel = {}
 global.datos = [];
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
@@ -10,49 +10,16 @@ var userSchema = new Schema({
     slname:String,
     email:String,
     phone:String,
-    password:String,
-    perfil:Number,
-    //SCHEMA DE LA UNIDAD
-    unitname:String,
-    complement:String,
-    buildingname:String,
-    parking:String,
-
+    pass:String,
+    perfil:Number
+    
 })
 
 //CREACIÓN DEL MODELO PARA LA COLECCIÓN DE LA DB
-const MyModel = mongoose.model('members',userSchema)
+const MyModel = mongoose.model('admin',userSchema)
 
 
-sesionesModel.registro = function(post,callback){
-
-    const instancia = new MyModel
-    instancia.fname = post.fname
-    instancia.mname = post.mname
-    instancia.lname = post.lname
-    instancia.slname = post.slname
-    instancia.unitname = post.unitname
-    instancia.complement = post.complement
-    instancia.buildingname = post.buildingname
-    instancia.parking = post.parking
-    instancia.email = post.email
-    instancia.phone = post.phone
-    instancia.password = post.password
-    instancia.perfil = 0
-
-    instancia.save((error,usercreated) => {
-        if(error){
-            console.log(error)
-            return callback({state:false,info:error})
-        }
-        else{
-            console.log(usercreated)
-            return callback({state:true,info:usercreated})
-        }
-    })
-   
-}
-sesionesModel.adminregistro = function(post,callback){
+adminModel.registro = function(post,callback){
 
     const instancia = new MyModel
     instancia.fname = post.fname
@@ -61,7 +28,7 @@ sesionesModel.adminregistro = function(post,callback){
     instancia.slname = post.slname
     instancia.email = post.email
     instancia.phone = post.phone
-    instancia.password = post.password
+    instancia.pass = post.pass
     instancia.perfil = 1
 
     instancia.save((error,usercreated) => {
@@ -76,9 +43,10 @@ sesionesModel.adminregistro = function(post,callback){
     })
    
 }
-sesionesModel.buscaremail = function (post, callback){
 
-    MyModel.find({email:post.email},{fname:1,mname:1,lname:1,slname:1,phone:1,unitname:1,building:1,parking:1,email:1},(error,registros) => {
+adminModel.buscaremail = function (post, callback){
+
+    MyModel.find({email:post.email},{fname:1,mname:1,lname:1,slname:1,phone:1,email:1},(error,registros) => {
         if(error){
             console.log(error)
             return callback(false)
@@ -96,15 +64,15 @@ sesionesModel.buscaremail = function (post, callback){
     })
         
 }
-sesionesModel.posicionemail = function (post, callback){
+adminModel.posicionemail = function (post, callback){
     var posicion = datos.findIndex((item)=> {
         return item.email == post.email
     })
    return callback(posicion)  
 }
-sesionesModel.iniciarsesion = function(post,callback){
+adminModel.iniciarsesion = function(post,callback){
 
-    MyModel.find({email:post.email, password:post.password},{id:1,name:1,lname:1,email:1,perfil:1},(error,registros) => {
+    MyModel.find({email:post.email, pass:post.pass},{id:1,name:1,lname:1,email:1,perfil:1},(error,registros) => {
         if (error) {
             console.log(error)
             return callback({state:false, info:error})
@@ -125,34 +93,8 @@ sesionesModel.iniciarsesion = function(post,callback){
     
 }
 
-sesionesModel.adminlogin = function(post,callback){
-
-    MyModel.find({email:post.email, password:post.password},{id:1,name:1,lname:1,email:1,perfil:1},(error,registros) => {
-        if (error) {
-            console.log(error)
-            return callback({state:false, info:error})
-        }
-        else{
-           // return callback(registros)
-           if (registros.length > 0) {
-            return callback({state:true,registros:registros})
-            
-           }
-           else{
-            return callback({state:false})
-
-           }
-        }
-
-    })
-    
-}
-
-
-
-
-sesionesModel.listar = function(post,callback){
-    MyModel.find({},{id:1,fname:1,mname:1,lname:1,slname:1,email:1,phone:1,unitname:1,complement:1,parking:1,buildingname:1,},(error,registros) => {
+adminModel.listar = function(post,callback){
+    MyModel.find({},{id:1,fname:1,mname:1,lname:1,slname:1,email:1,phone:1,},(error,registros) => {
         if (error) {
             console.log(error)
             return callback({state:false, info:error})
@@ -164,8 +106,8 @@ sesionesModel.listar = function(post,callback){
     })
 }
 
-sesionesModel.CargarId = function(post,callback){
-    MyModel.find({_id:post.id},{id:1,fname:1,mname:1,lname:1,slname:1,email:1,phone:1,unitname:1,building:1,parking:1,age:1},(error,registros) => {
+adminModel.CargarId = function(post,callback){
+    MyModel.find({_id:post.id},{id:1,fname:1,mname:1,lname:1,slname:1,email:1,phone:1,},(error,registros) => {
         if (error) {
             console.log(error)
             return callback({state:false, info:error})
@@ -177,7 +119,7 @@ sesionesModel.CargarId = function(post,callback){
     })
 }
 
-sesionesModel.actualizarnombre = function(post,callback){
+adminModel.actualizarnombre = function(post,callback){
 
     MyModel.findOneAndUpdate({email:post.email},
         {
@@ -186,10 +128,8 @@ sesionesModel.actualizarnombre = function(post,callback){
             lname:post.lname,
             slname:post.slname,
             email:post.email,
-            phone:post.phone,
-            unitname:post.unitname,
-            building:post.building,
-            parking:post.parking
+            phone:post.phone
+           
         },(error,usuariomodificado)=>{
         if (error) {
             console.log(error)
@@ -203,7 +143,7 @@ sesionesModel.actualizarnombre = function(post,callback){
     
 
 }
-sesionesModel.eliminarusuario = function(post,callback){
+adminModel.eliminarusuario = function(post,callback){
 
     MyModel.findOneAndDelete({email:post.email} ,(error,eliminado)=>{
         if (error) {
@@ -216,5 +156,5 @@ sesionesModel.eliminarusuario = function(post,callback){
     })
   
 }
-module.exports.sesionesModel = sesionesModel;
+module.exports.adminModel = adminModel;
 

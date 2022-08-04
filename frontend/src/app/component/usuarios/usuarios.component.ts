@@ -20,7 +20,7 @@ export class UsuariosComponent implements OnInit {
   confirmar:string = ""
   unitname:string = ""
   complement:string = ""
-  unitcategory:string =""
+  parking:string =""
   buildingname:string =""
   errornombre:string = ""
   erroremail:string = ""
@@ -69,7 +69,7 @@ export class UsuariosComponent implements OnInit {
         phone:this.phone,
         unitname:this.unitname,
         complement:this.complement,
-        unitcategory:this.unitcategory,
+        parking:this.parking,
         building:this.buildingname,
         password:this.password,
         confirmar:this.confirmar
@@ -169,7 +169,7 @@ export class UsuariosComponent implements OnInit {
        this.phone = res.usuarios[0].phone
        this.unitname = res.usuarios[0].unitname
        this.complement = res.usuarios[0].complement
-       this.unitcategory = res.usuarios[0].unitcategory
+       this.parking = res.usuarios[0].parking
        this.buildingname = res.usuarios[0].buildingname
 
 
@@ -193,7 +193,7 @@ export class UsuariosComponent implements OnInit {
     this.phone = ""
     this.unitname = ""
     this.complement = ""
-    this.unitcategory = ""
+    this.parking = ""
     this.buildingname = ""
     this.idseleccionado = ""
     this.password = ""
@@ -216,7 +216,7 @@ export class UsuariosComponent implements OnInit {
         phone:this.phone,
         unitname:this.unitname,
         complement:this.complement,
-        unitcategory:this.unitcategory,
+        parking:this.parking,
         building:this.buildingname,
         password:this.password,
         confirmar:this.confirmar

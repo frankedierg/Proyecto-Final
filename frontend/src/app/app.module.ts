@@ -30,6 +30,8 @@ import { InterceptorService } from './interceptors/interceptor';
 import { SubirarchivosComponent } from './component/subirarchivos/subirarchivos.component';
 import { NavbarAdminComponent } from './component/navbar-admin/navbar-admin.component';
 import { CuotasAdmonComponent } from './component/cuotas-admon/cuotas-admon.component';
+import { ParqueaderosComponent } from './component/parqueaderos/parqueaderos.component';
+import { VigilanciaComponent } from './component/vigilancia/vigilancia.component';
 
 
 
@@ -60,7 +62,9 @@ import { CuotasAdmonComponent } from './component/cuotas-admon/cuotas-admon.comp
     SecondarynavbarComponent,
     SubirarchivosComponent,
     NavbarAdminComponent,
-    CuotasAdmonComponent
+    CuotasAdmonComponent,
+    ParqueaderosComponent,
+    VigilanciaComponent
     
 
   ],

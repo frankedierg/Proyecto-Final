@@ -13,7 +13,7 @@ export class AdminloginComponent implements OnInit {
 
   constructor(private peticion:PeticionService,private msg:MensajesService,private router:Router) { }
   email:string = "myemail@gmail.com"
-  password:string = ""
+  pass:string = ""
   datos:any[] = []
   respuestalogin:any
 
@@ -27,10 +27,10 @@ export class AdminloginComponent implements OnInit {
     //INICIO PETICIÓN
     var post = {
       host:this.peticion.urlLocal,
-      path:"/usuarios/adminlogin",
+      path:"/admin/login",
       payload:{
         email:this.email,
-        password:this.password
+        pass:this.pass
       }
 
     }

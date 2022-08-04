@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MensajesService } from 'src/app/Servicios/mensajes.service';
 import { PeticionService } from 'src/app/Servicios/peticion.service';
+declare var swal:any
 
 @Component({
   selector: 'app-staff',
@@ -15,7 +16,7 @@ export class StaffComponent implements OnInit {
   slname:string = ""
   email:string = ""
   phone:string = ""
-  password:string = ""
+  pass:string = ""
   confirmar:string = ""
   errornombre:string = ""
   erroremail:string = ""
@@ -50,7 +51,7 @@ export class StaffComponent implements OnInit {
       //PETICIÓN
     var post = {
       host:this.peticion.urlLocal,
-      path:"/usuarios/adminregistro",
+      path:"/admin/registro",
       payload:{
         fname:this.fname,
         mname:this.mname,
@@ -58,7 +59,7 @@ export class StaffComponent implements OnInit {
         slname:this.slname,
         email:this.email,
         phone:this.phone,
-        password:this.password,
+        pass:this.pass,
         confirmar:this.confirmar
       }
 
@@ -66,17 +67,20 @@ export class StaffComponent implements OnInit {
     this.peticion.Post(post.host + post.path, post.payload ).then((res:any)=>{
       console.log(res)
       if (res.state == true) {
+        swal("Muy bien!", "El visitante se ha ingresado!", "success");
         this.msg.Agregarmensaje('success',res.mensaje,15000)
         this.cargartodas()
         this.Nuevo()
       }
       else{
+        swal("Algo salió mal!", "El visitante  ya está registrado!", "error");
         this.msg.Agregarmensaje('danger',res.mensaje,5000)
       }
      }) 
       
     }
     else{
+      swal("Algo salió mal!", "Error en el formulario!", " error");
       this.msg.Agregarmensaje('danger','Error en el formulario',5000)
     }
     
@@ -89,7 +93,7 @@ export class StaffComponent implements OnInit {
       //PETICIÓN
     var post = {
       host:this.peticion.urlLocal,
-      path:"/usuarios/listar",
+      path:"/admin/listar",
       payload:{
         
       }
@@ -97,7 +101,7 @@ export class StaffComponent implements OnInit {
     }
     this.peticion.Post(post.host + post.path, post.payload ).then((res:any)=>{
       console.log(res)
-      this.datos = res.usuarios
+      this.datos = res.admin
     })
     
     
@@ -109,7 +113,7 @@ export class StaffComponent implements OnInit {
   
     var post = {
       host:this.peticion.urlLocal,
-      path:"/usuarios/eliminar",
+      path:"/admin/eliminar",
       payload:{
         email:email
        
@@ -119,10 +123,12 @@ export class StaffComponent implements OnInit {
     this.peticion.Post(post.host + post.path, post.payload ).then((res:any)=>{
       console.log(res)
       if (res.state == true) {
+        swal("Muy bien!", "El visitante ha salido!", "success");
         this.msg.Agregarmensaje('success',res.mensaje,5000)
         this.cargartodas()
       }
       else{
+        swal("Algo salió mal!", "El visitante no ha salido!", "error");
         this.msg.Agregarmensaje('danger',res.mensaje,5000)
       }
      }) 
@@ -133,7 +139,7 @@ export class StaffComponent implements OnInit {
     this.idseleccionado = myid
     var post = {
       host:this.peticion.urlLocal,
-      path:"/usuarios/CargarId",
+      path:"/admin/CargarId",
       payload:{
         id:myid
       }
@@ -143,12 +149,12 @@ export class StaffComponent implements OnInit {
       console.log(res)
       if (res.state == true) {
        
-       this.fname = res.usuarios[0].fname
-       this.mname = res.usuarios[0].mname
-       this.lname = res.usuarios[0].lname
-       this.slname = res.usuarios[0].slname
-       this.email = res.usuarios[0].email
-       this.phone = res.usuarios[0].phone
+       this.fname = res.admin[0].fname
+       this.mname = res.admin[0].mname
+       this.lname = res.admin[0].lname
+       this.slname = res.admin[0].slname
+       this.email = res.admin[0].email
+       this.phone = res.admin[0].phone
        
 
 
@@ -170,7 +176,7 @@ export class StaffComponent implements OnInit {
     this.email = ""
     this.phone = ""
     this.idseleccionado = ""
-    this.password = ""
+    this.pass = ""
     this.confirmar = ""
 
   }
@@ -179,7 +185,7 @@ export class StaffComponent implements OnInit {
 
     var post = {
       host:this.peticion.urlLocal,
-      path:"/usuarios/actualizar",
+      path:"/admin/actualizar",
       payload:{
         id:this.idseleccionado,
         fname:this.fname,
@@ -188,7 +194,7 @@ export class StaffComponent implements OnInit {
         slname:this.slname,
         email:this.email,
         phone:this.phone,
-        password:this.password,
+        pass:this.pass,
         confirmar:this.confirmar
       }
 
@@ -196,11 +202,13 @@ export class StaffComponent implements OnInit {
     this.peticion.Post(post.host + post.path, post.payload ).then((res:any)=>{
       console.log(res)
       if (res.state == true) {
+        swal("Muy bien!", "Se ha actualizado la inforación!", "success");
         this.msg.Agregarmensaje('success',res.mensaje,15000)
         this.cargartodas()
         this.Nuevo()
       }
       else{
+        swal("Algo salió mal!", "No se actualizó al información!", "error");
         this.msg.Agregarmensaje('danger',res.mensaje,5000)
       }
      }) 
